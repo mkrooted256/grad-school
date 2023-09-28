@@ -1,0 +1,328 @@
+\documentclass[11pt, a4paper]{article} % use larger type; default would be 10pt
+
+\usepackage{fontspec} % Font selection for XeLaTeX; see fontspec.pdf for documentation
+\defaultfontfeatures{Mapping=tex-text} % to support TeX conventions like ``---''
+\usepackage{xunicode} % Unicode support for LaTeX character names (accents, European chars, etc)
+\usepackage{xltxtra} % Extra customizations for XeLaTeX
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,patterns}
+
+
+% other LaTeX packages.....
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd,systeme}
+\usepackage{unicode-math}
+\usepackage{cancel}
+\geometry{a4paper} 
+%\usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+
+% FONTS
+% \setmainfont[Ligatures=TeX]{Cambria Math} % set the main body font (\textrm), assumes Charis SIL is installed
+%\setsansfont{Deja Vu Sans}
+% \setmonofont[Ligatures=TeX]{Fira Code}
+\setmathfont[Ligatures=TeX]{NewCMMath-Regular}
+
+\setmainfont{Cambria}
+\setmonofont[Ligatures=TeX]{Roboto Mono}
+
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+\lstdefinestyle{mystyle}{
+    % backgroundcolor=\color{backcolour},   
+    % commentstyle=\color{codegreen},
+    % keywordstyle=\color{magenta},
+    % numberstyle=\tiny\color{codegray},
+    % stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\newcommand\course{MS1 - Algebra}
+\newcommand\hwnumber{HW 2}                   % <-- homework number
+\newcommand\idgroup{111-2023}                
+\newcommand\idname{Mykhailo Koreshkov}  
+
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfsetup{%
+	backgroundcolor = black!5,
+}
+\mdfdefinestyle{ans}{%
+    backgroundcolor = green!5,
+    linecolor = green!50,
+    linewidth = 1pt,
+}
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\idgroup \\ \idname}
+\chead{\textbf{\Large \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\linespread{1.2}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\cd}{CD}
+
+
+\begin{document}
+
+
+\section*{Ex 2.1}
+\begin{mdframed}
+    Let $a,b \in \Z,\; a,b>0, \; \gcd(a,b)=1$.
+    Довести, що
+    $$\left(\exists m\in\N: ab=m^2\right) \implies \exists s,t\in\N: a=s^2 \land b=t^2$$
+\end{mdframed}
+
+\begin{proof}
+    Одразу використаю основну теорему арифметики. ().
+    \begin{gather*}
+        ab = m^2\\
+        a = \prod_{p\in\mathcal{P}} p^{\alpha_p}\\
+        b = \prod_{p\in\mathcal{P}} p^{\beta_p}\\
+        m = \prod_{p\in\mathcal{P}} p^{\mu_p}\\
+        m^2 = \prod_{p\in\mathcal{P}} p^{2\mu_p}\\
+        \prod_{p\in\mathcal{P}} p^{\alpha_p+\beta_p} = \prod_{p\in\mathcal{P}} p^{2\mu_p}\\
+        \alpha_p+\beta_p = 2\mu_p\\
+    \end{gather*}
+    Тепер використаю той факт, що $\gcd(a,b)=1$.
+    З цього слідуватиме що $\forall p: \alpha_p \beta_p = 0$, тобто ненульовим є лише один з степенів незвідного множника.
+
+    Отож $\alpha_p+\beta_p = 2\mu_p$ значить що $\alpha_p = 2\mu_p, \beta_p = 0$ або $\beta_p = 2\mu_p, \alpha_p=0$.\\
+    Таким чином $\forall p: 2\mid \alpha_p \land 2\mid \beta_p$.\\
+    Нехай $s = \prod_p p^{\alpha_p/2}, \; t = \prod_p p^{\beta_p/2}$.\\
+    Тоді $a = s^2, b = t^2$.
+\end{proof}
+
+\section*{Ex 2.2}
+\begin{mdframed}
+    Нехай $a,b\in\Z, \; \gcd(a,b) = 1$.\\
+    Нехай $\exists m\in\Z: ab=m^2$.
+    Довести що $\exists s,t\in\Z: a=s^2, b=t^2$.
+\end{mdframed}
+
+Різниця з 2.1 у тому, що тут a та b можуть бути 0 та від'ємними.
+Тут $\mathcal{P} = \{2,3,5,...\}$ - множина \textbf{додатніх} простих чисел.
+
+Нехай 
+\begin{gather*}
+    a = \pm\prod_{p\in\mathcal{P}} p^{\alpha_p}\\
+    b = \pm\prod_{p\in\mathcal{P}} p^{\beta_p}\\
+    m^2 = +\prod_{p\in\mathcal{P}} p^{2\mu_p}
+\end{gather*}
+
+Тоді з 2.1 маємо $\alpha_p = 2\mu_p, \beta_p = 0$ або $\beta_p = 2\mu_p, \alpha_p=0$ для $p\ne 1$.\\
+Нехай $s = \prod_p p^{\alpha_p/2}, \; t = \prod_p p^{\beta_p/2}$.
+
+\begin{gather*}
+    a = (-1)^\alpha_1 \cdot s
+    b = (-1)^\beta_1 \cdot t
+    ab = (-1)^{\alpha_1+\beta_1} \cdot st = m^2
+\end{gather*}
+
+Очевидно $\alpha_1+\beta_1 \equiv 0 \mod 2$.
+Тобто $a$ та $b$ матимуть один знак.
+
+Припустимо, що $a<0, b<0$.
+
+Або я щось не так зрозумів, або задача практично еквівалентна 2.1. 
+Але якщо розглядати від'ємні випадки, то я сумніваюся, що від'ємні числа можна представити як повний квадрат.
+
+\begin{gather*}
+    a = -16, \quad b = -25\\
+    ab = +400 = 20^2\\
+    n = 20
+\end{gather*}
+Але $a$ та $b$ можна представити лише як $-n^2$.
+
+\section*{Ex 2.3}
+\begin{mdframed}
+    Нехай $p$ - просте. Нехай $a,n\in\Z, n\ge 0$. 
+    Довести
+    $$p\mid a^n \implies p^n\mid a^n$$
+\end{mdframed}
+
+\begin{proof}
+    Перший випадок $n=0$.
+    \[p\mid 1 \implies p = 1 \implies 1 \mid 1\]
+
+    Другий випадок $n=1$.
+    \[p\mid a \implies p \mid a\]
+
+    Нетривіальні випадки $n>1$.
+    Розкладаємо $a$:
+    \[a = \pm \prod_{q\in\mathcal{P}}q^{a_q}, \quad a_q\in\N\]
+    Тоді
+    \[a^n = \pm \prod_{q\in\mathcal{P}}q^{n \cdot a_q}\]
+
+    Оскільки $p\mid a^n$, то $(n\cdot a_p) > 0$ як степінь при факторі $p$ у розкладі $a^n$.
+    Ми прийняли $n>1$, отож маємо $a_p > 0$.
+    А звідси $na_p \ge n$, з чого слідує $a^n = p^{n} \cdot p^{n(a_p-1)} \cdot \prod_{q\in\mathcal{P}, q\ne p}q^{na_q}$.
+    Отже
+    \[p^n \mid a^n\]
+\end{proof}
+
+\section*{Ex 2.4}
+Тут і далі позначатиму $(a\equiv b \mod n)$ як $a\equiv_n b$.
+
+\begin{mdframed}
+    Нехай $a,b\in\Z$. Нехай $P=\{2,3,5,7,11,...\}$ - множина незвідних цілих чисел.
+    Довести:
+    \[\left(\forall q\in P: a \equiv_q b\right) \implies a=b\]
+\end{mdframed}
+
+\begin{proof}
+    Нехай $g = \gcd(a,b)$.
+    Тоді 
+    \begin{gather*}
+        a = gx\\
+        b = gy\\
+        \gcd(x,y) = 1
+    \end{gather*}
+    Далі
+    \begin{gather*}
+        \forall q\in P: a-b = qk \\
+        gx-gy = g(x-y) = qk \\
+        \forall q\in P: q \mid g(x-y) \\
+    \end{gather*}
+
+    Єдине таке число, яке ділиться на всі прості числа, це $0$.
+    Тобто $g(x-y) = 0$
+    \[
+    \left[\begin{matrix}
+        g = 0 &\implies& a=b=0\\
+        (x-y)=0 &\implies& x=y \implies a=b
+    \end{matrix}\right.
+    \]
+
+    Отже, $a=b$.
+\end{proof}
+
+\section*{Ex 2.5}
+\begin{mdframed}
+    Нехай $q>5$, $q$ - незвідне.
+    Довести що
+    \[[q]_6 = [1]_6 \vee [q]_6 = [5]_6\]     
+\end{mdframed}
+
+\begin{proof}
+    Що означає твердження?
+
+    По-перше зазначу, що число не може бути в двох різних класах еквівалентності за одним відношенням еквівалентності (для одного $n$).
+    \begin{gather*}
+    [q]_6 = [1]_6 \vee [q]_6 = [5]_6\\
+    q \equiv_6 1 \vee q \equiv_6 = 5\\
+    6 \mid (q-1) \vee 6 \mid (q-5)
+    \end{gather*}
+
+    Розглянемо всі можливі залишки при діленні $q$ на 6.
+    \begin{gather*}
+        q \mod 6 = 0 \implies 6 \mid q \implies q \notin \mathcal{P}\\ 
+        q \mod 6 = 2 \implies q = 6k+2 = 2(3k+1) \implies 2 \mid q \implies q \notin \mathcal{P}\\
+        q \mod 6 = 3 \implies q = 6k+3 = 3(2k+1) \implies 3 \mid q \implies q \notin \mathcal{P}\\
+        q \mod 6 = 4 \implies q = 6k+4 = 2(3k+2) \implies 2 \mid q \implies q \notin \mathcal{P}\\
+    \end{gather*}
+
+    Для інших залишків продемонструю прикладами їх можливість
+    \begin{gather*}
+        q = 11 \implies q \equiv_6 5\\
+        q = 13 \implies q \equiv_6 1
+    \end{gather*}
+\end{proof}
+
+\section*{Ex 2.6}
+\begin{mdframed}
+    Перевірити твердження
+    \[\left([a]_n \ne [0]_n \land [a]_n \cdot [b]_n=[a]_c \cdot [c]_n\right) \implies [b]_n = [c]_n\]
+\end{mdframed}
+
+Що це все означає?
+\begin{gather*}
+    a \mod n \ne 0\\
+    ab \mod n = ac \mod n\\
+\end{gather*}
+тобто
+\begin{gather*}
+    n \nmid a\\
+    n \mid (ab-ac)\\
+    n \mid a(b-c)
+\end{gather*}
+
+Якщо $n$ - просте, то дійсно $n \mid (b-c)$, бо $n \nmid a$.
+Але якщо $n$ - складене, то може не виконуватись.
+
+Візьмемо
+\begin{gather*}
+    n = 6 = 3\cdot 2\\
+    a = 2\\
+    b = 7\\
+    c = 4\\
+\end{gather*}
+Тоді
+\begin{gather*}
+    2 \mod 6 = 2 \ne 0\\
+    ab = 14 \equiv_6 2\\
+    ac = 8 \equiv_6 2\\
+    b \mod 6 = 1
+    c \mod 6 = 4 \ne 1
+\end{gather*}
+
+Знайшли контрприклад. 
+
+\section*{Ex 2.7}
+\begin{mdframed}
+    Довести:
+    \[[a]_n=[1]_n \implies \gcd(a,n)=1\]
+    Але не навпаки
+\end{mdframed}
+
+\begin{proof}
+    \[[a]_n = [1]_n\]
+    Тобто
+    \[n \mid (a-1) \]
+    Або інакше
+    \[\exists k\in\Z: a = kn + 1\]
+    Тобто
+    \[a = kn + 1\]
+    Або
+    \[1a-kn = 1\]
+    Що означає
+    \[\gcd(a,n) = 1\]
+\end{proof}
+
+Знайдемо контрприклад до оберненого твердження
+
+\begin{gather*}
+    a = 6, n = 7\\
+    \gcd(a,n) = 1\\
+    a \mod n = 6 \mod 7 = 6\\
+    1 \mod n = 1 \mod 7 = 1
+\end{gather*}
+Тобто $[a]_n \ne [1]_n$
+
+\end{document}
+

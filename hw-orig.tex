@@ -1,3 +1,6 @@
+% !TEX program = xelatex
+% !TEX encoding = UTF-8
+
 \documentclass[11pt, a4paper]{article} % use larger type; default would be 10pt
 
 \usepackage{fontspec} % Font selection for XeLaTeX; see fontspec.pdf for documentation
@@ -7,6 +10,9 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows,calc,patterns}
 
+\setmainfont[Ligatures=TeX]{[EBGaramond-Regular.ttf]} % set the main body font (\textrm), assumes Charis SIL is installed
+%\setsansfont{Deja Vu Sans}
+\setmonofont[Ligatures=TeX]{[FiraCode-Regular.ttf]}
 
 % other LaTeX packages.....
 \usepackage{fullpage}
@@ -21,12 +27,6 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{multicol}
-
-% FONTS
-% \setmainfont[Ligatures=TeX]{Cambria Math} % set the main body font (\textrm), assumes Charis SIL is installed
-%\setsansfont{Deja Vu Sans}
-\setmonofont[Ligatures=TeX]{Fira Code}
-\setmathfont[Ligatures=TeX]{NewCMMath-Regular.otf}
 
 \renewcommand\lstlistingname{Algorithm}
 \renewcommand\lstlistlistingname{Algorithms}
@@ -51,10 +51,10 @@
 }
 \lstset{style=mystyle}
 
-\newcommand\course{MS1 - Differential geometry and topology}
-\newcommand\hwnumber{HW 1}                   % <-- homework number
-\newcommand\idgroup{111-2023}                
-\newcommand\idname{Mykhailo Koreshkov}  
+\newcommand\course{7 - Випадкові процеси}
+\newcommand\hwnumber{Домашнє завдання №1}             % <-- homework number
+\newcommand\idgroup{ФІ-91}                
+\newcommand\idname{Михайло Корешков}  
 
 \usepackage[framemethod=TikZ]{mdframed}
 \mdfsetup{%
@@ -78,13 +78,26 @@
 
 \linespread{1.2}
 
+\DeclareMathOperator{\cov}{cov}
+
+
 \begin{document}
 
+\section*{№1}
+\begin{mdframed}
+    \[\xi \sim Exp(2)\]
 
-\section*{Ex 1.1}
-\subsection*{}
+    $P(\xi \in [1,2]) - ?$\\
+    $P(\xi^2 - 5\xi \ge -6) - ?$\\
+    Знайти щільність розподілу $\eta = \ln(2\xi)$
+\end{mdframed}
 
+$$f(x) = f_\xi(x) = 2e^{-2x}$$
+$$P(\xi \in [1,2]) = \int_{1}^2 f_\xi(x)dx = -e^{-2\cdot 2} + e^{-2\cdot 1} = e^{-2} - e^{-4}$$
 
+$$P(\xi^2 - 5\xi \ge -6) = P((\xi-3)(\xi-2) \ge 0) = P(\xi \le 2) + P(\xi \ge 3) = 1-e^{-4} + e^{-6}$$
+
+$$$$
 
 \end{document}
 
