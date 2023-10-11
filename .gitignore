@@ -27,3 +27,6 @@ lib/
 # IDEs
 **/.idea/**
 **/.vscode/**
+
+jupyter2pdf/
+

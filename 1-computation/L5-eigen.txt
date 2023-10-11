@@ -1,0 +1,13 @@
+https://en.wikipedia.org/wiki/List_of_numerical_analysis_topics#Eigenvalue_algorithms
+
+1.
+Степеневий метод пошуку власних чисел та векторів
+https://en.wikipedia.org/wiki/Power_iteration
+- max min eigenvals and eigenvecs
+- second eigenval
+
+2.
+(Jacobi) Rotation method - Ітеративний метод
+- https://en.wikipedia.org/wiki/Jacobi_rotation
+- https://en.wikipedia.org/wiki/Jacobi_eigenvalue_algorithm
+

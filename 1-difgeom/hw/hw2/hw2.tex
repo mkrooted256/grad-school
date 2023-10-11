@@ -1,10 +1,11 @@
-\documentclass[11pt, a4paper]{article} % use larger type; default would be 10pt
+\documentclass[10pt, a4paper]{article} % use larger type; default would be 10pt
 
 \usepackage{fontspec} % Font selection for XeLaTeX; see fontspec.pdf for documentation
 \defaultfontfeatures{Mapping=tex-text} % to support TeX conventions like ``---''
 \usepackage{xunicode} % Unicode support for LaTeX character names (accents, European chars, etc)
 \usepackage{xltxtra} % Extra customizations for XeLaTeX
 \usepackage{tikz}
+% \usepackage{coloremoji}
 \usetikzlibrary{arrows,calc,patterns}
 
 
@@ -87,6 +88,7 @@
 \DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\cd}{CD}
 
+\renewcommand{\B}{\mathcal{B}}
 
 \begin{document}
 
@@ -126,6 +128,7 @@
 Отже, знайшли $V$ - окіл $x$ та $\alpha : V \to \R^n$ - hom для довільного $x \in X$.
 \end{proof}
 
+\newpage
 \section*{Ex 2.2}
 \begin{mdframed}
     Перевірити наступні властивості топологічного многовиду $X$.
@@ -137,85 +140,163 @@
 \end{mdframed}
 
 \begin{mdframed}[backgroundcolor=blue!10]
-    Нехай $(X, \tau)$ - топ простір. $V(x) = \{V\in\tau : x\in V\}$ - всі околи $x$.\\
-    База $B = \{B_\alpha\}$ околу точки $x$ топ. простору $X$:
-    \[
-    \begin{cases}
-        B \subset V(x)\\
-        \forall V\in V(x): \exists B_\alpha: B_\alpha \subset V
-    \end{cases}    
-    \]
+    $\B = \{B_i\} \subset \tau$ є базою точки $x$ якщо 
+    \[\forall U\in\tau: x\in U \implies \exists I: U = \bigcup_{i\in I} B_i \]
+    Або еквівалентно
+    \[(\forall \alpha: x \in \B_\alpha) \land (\forall U_x \text{ - neighborhood of }x: \exists B \in \B: x \in B \subset U_x)\]
 \end{mdframed}
 
-Локальна лінійна зв'язність вимагає щоб кожна множина бази була лінійно зв'язна.
+% \begin{mdframed}[backgroundcolor=blue!10]
+    Альтернативне формулювання локальної лінійної зв'язності.
+    \[\forall U_x \text{ - neighborhood of }x: \exists V\in\tau: x \in V \subset U_x, \;V \text{ - path connected}\]
 
-% Тут багато необов'язкових пунктів доведення, але вони корисні мені для розуміння 
-% топологічної природи многовидів над $\R$. Основне доведення в останньому пункті.
+    Доведу еквівалентність визначень через базу (1) та через \\ 
+    відкриті зв'язні підмножини (2):
+    \begin{proof}[Доведення 1->2]
+        Нехай $\B$ - база $x\in X$.
+        Нехай $\forall B \in \B: B$ - лінійно зв'язна.
+        Нехай $U_x$ - деякий окіл $x$.  
+        З визначення околу $\exists U\in\tau: x \in U \subset U_x$.
+        З визначення бази слідує
+        \[\exists B \in \B: x \in B \subset U \;(\subset U_x)\]
+        Але кожна $B\in\B$ line connected.
+        Тобто знайшли $B: x\in B\subset U_x$ таку що $B$ - path connected.
+    \end{proof}
+    \begin{proof}[Доведення 2->1]
+        \[\forall U_x \text{ - neighborhood of }x: \exists V\in\tau: x \in V \subset U_x, \;V \text{ - path connected}\]
+        Візьмемо систему околів $x$:
+        \[N(x) = \{U_x\} = \{U_x : \exists V\in \tau: x\in V \subset U_x\}\]
+        Для кожного околу застосую визначення (2):
+        \[S = \{V : U_x \in N(x), V \in \tau, x \in V \subset U_x, V \text{ - path connected}\}\]
+        Кожен елемент $S$ лінійно зв'язний. $S$ - це також база точки $x$, оскільки
+        $\forall V \in S: x \in V$ та \\
+        $\forall U_x: \exists V \in S: x\in V \subset U_x$ за побудовою множини $S$.
+    \end{proof}
+% \end{mdframed}
+Отже, довели еквівалентність визначень локально лінійно зв'язного простору.
 
-% \begin{proof}
-%     \begin{itemize}
-%         \item 
-%         По-перше, фіксуємо точку $x \in X$ та деяку карту $(U, \phi)$, $\phi : U \to \R^n$ - hom.
-        
-%         Нехай $y = \phi(x)$.
-%         Розглянемо систему околів $N_{\R^n}(y) = \{V \in \R^n : V {- open}, y \in V\}$.
-%         Відомо, що у такої системи є зліченна база $B(y)$ 
-%         (взагалі, весь $\R^n$ має зліченну базу).
+Доведення властивості 2.2.1
+\begin{proof}[Властивість 2.2.1]
+    Візьмемо $U_x$ - довільний окіл $x$.
+    З визначення околу, $\exists U \in \tau: x \in U \subset U_x$.\\
+    З визначення многовиду, $\exists (V,\phi), V \in \tau$ - локальна карта для точки $x$.
+    \[\phi:V \to \R^n \text{ - hom}\]
+    Нехай $H = U \cap V$. $H$ відкрита як скінченний перетин відкритих множин.  
+    $\psi = \phi|_H : H \to \R^n$ - обмеження $\phi$ на $H$ - все ще гомеоморфізм.  
 
-%         \item
-%         Нехай $M = \{\phi^{-1}(V) : V \in B(y)\}$. 
-%         Доведу, що це база системи околів точки $x$ у просторі $X$.
-%         \begin{proof}
-%             Позначу систему околів точки $x$ як 
-%             $N(x) = \{V\cap U \in X : V \text{ - open}, x\in V\}$.\\
-%             Зрозуміло, що також $N(x) = \{\phi^{-1}(V) : V \in N_{\R^n}(y)\}$, оскільки $\phi$ - hom.
-
-%             Візьмемо довільний $W \in N(x)$.
-%             Для $\phi(W)$ знайдеться $B_1 \in B(y)$ такий, що $B_1 \subset \phi(W)$.
-%             З властивостей гомеомеорфізму, $\phi^{-1}(B_1) \subset \phi^{-1}(\phi(W)) = W$.\\
-%             З іншого боку, $\phi^{-1}(B_1) \in M$.
-
-%             Отже, 
-%             \[\forall W\in N(x): \exists B_\alpha \in M: B_\alpha \subset W\]
-%             Тобто, $M$ - база точки $x$ в $X$.
-%         \end{proof}
-%         Позначу базу точки $x$ як $B(x) = \{B_n\}$.
-
-%         \item
-%         Переходимо до лінійної зв'язності.
-%         Нехай $B(x)$ - база точки $x\in X$. Нехай $(U,\phi)$ - карта навколо $x$.\\
-%         Відомо, що $\R^n$ - лінійно зв'язний простір.
-%         Тобто
-%         \[\forall u,v \in \R^n : \exists w:[0,1]\to \R^n, w \in C^0: w(0)=u \land w(1)=v\] 
-        
-%         Фіксуємо довільні $B_n\in B(x), u,v\in B_n$.
-%         Нехай $u' = \phi(u), v' = \phi(v)$. 
-%         Існує неперервна $w':[0,1]\to \R^n$, $w'(0) = u', w'(1)=v'$.
-%         Оскільки $\phi$ - hom, то $w = \left(\phi^{-1} \circ w'\right), w : [0,1] \to U$ - також неперервна.
-
-%         $w$ - шукана неперервна крива що з'єднує довільні точки в будь якому елементі базису будь якої точки
-%     \end{itemize}
-% \end{proof}
-
-\begin{proof}
-    Нехай $B(x)=\{B_\alpha\}$ - база точки $x\in X$. 
-    Фіксуємо довільні $B_1\in B(x), u,v\in B_1$.
-
-    Припустимо, що існує 
-    Візьмемо довільну карту $(U, \phi)$ навколо точки $x$.
-    $\exists B_1$
-
-    Відомо, що $\R^n$ - лінійно зв'язний простір.
-    Тобто
-    \[\forall u,v \in \R^n : \exists w:[0,1]\to \R^n, w \in C^0: w(0)=u \land w(1)=v\] 
+    Візьмемо довільні $a,b \in H$. 
+    $\R^n$ - лінійно зв'язний. Тобто 
+    \[\exists f: [0,1] \to \R^n: f\in C^0, f(0)=\psi(a), f(1)=\psi(b)\]
+    $\psi$ - hom, отже $g = \left(\psi^{-1} \circ f\right) : [0,1] \to H$ - також неперервне відображення.  
+    Більше того, $g(0) = \psi^{-1}(\psi(a)) = a, g(1) = \psi^{-1}(\psi(b)) = b$.
     
-    Нехай $u' = \phi(u), v' = \phi(v)$. 
-    Існує неперервна $w':[0,1]\to \R^n$, $w'(0) = u', w'(1)=v'$.
-    Оскільки $\phi$ - hom, то $w = \left(\phi^{-1} \circ w'\right), w : [0,1] \to U$ - також неперервна.
-
+    Таким чином для довільного околу $x$ знайшли відкритий лінійно зв'язний підокіл, 
+    що еквівалентно локальній лінійній зв'язності простору $X$.
 \end{proof}
 
-% todo: використати індуковану картою евклідову топологію 
+\subsection*{Ex 2.2.2}
+\begin{mdframed}
+    Довести що $X$ є локально компактним. Тобто у кожної точки є база що скаладється з околів із компактними замиканнями (1)
+\end{mdframed}
+
+Альтернативне визначення локально компактного простору
+\[\forall x: \exists U_x \text{ - neighborhood}: U_x \text{ - compact} \quad (2)\]
+
+\begin{proof}[Доведення властивості 2.2.2 для визначення (2)]
+    Фіксуємо $x\in X$.
+    $\exists (U,\phi)$ - локальна карта.
+    \[\phi : U \to \R^n \text{ - homeomorphism}\]
+    Беремо $D = D_1(\phi(x)) = \{u \in \R^n: |u-\phi(x)|\le 1\}$ - замкнена куля навколо образу $x$ в $\R^n$.\\
+    $D$ - компакт, оскільки обмежена та замкнена. Компактність змерігається під дією гомеоморфізмів.
+    Тоді $\phi^{-1}(D)$ також компакт в $X$.\\
+    $B = B_1(\phi(x))$ - відкрита куля в $\R^n$, $B \subset D$.
+    $\phi^{-1}(B)$ - відкрита в $X$. При чому $\phi^{-1}(B) \subset \phi^{-1}(D)$.
+    А тоді $V = \phi^{-1}(D)$ - компактний окіл $x$ в $X$.
+    
+    Таким чином ми показали що для кожної точки $x\in X$ існує компактний окіл.
+\end{proof}
+
+\begin{proof}[Доведення властивості 2.2.2 для визначення (1)]
+    Фіксуємо точку $x\in X$.
+    Хочу показати що для довільного околу $x$ знайдеться локальна карта та відповідний 
+    прообраз $\R^n$ що лежить в цьому околі. 
+    
+    Розгляну довільний окіл $V_x$ та деяку локальну карту $(U,\phi)$.
+    $\exists V\in\tau: x\in V \subset V_x$\\
+    Let $W_o = V \cap U \subset V_x$. $W_o$ відкрита як перетин двох відкритих множин.\\
+    Let $W = \overline W$ - замикання $W$. Тоді $W \subset V_x$ (це неочевидне твердження).\\
+    $A = \phi(W)$ - замкнена в $\R^n$ бо $\phi^{-1} \in C^0$.\\
+    $A$ - компакт в $\R^n$ як замкнена та обмежена множина.
+    А тоді й $W$ є компактом.
+    Тобто для довільного окола $x$ знайшли компактний підокіл.
+
+    Повторюємо цей процес для всіх можливих околів $x$.
+    $S = \{W(U_x) : U_x \in \mathcal N(x)\}$.
+
+    $S$ - це база точки $x$ за побудовою, у якої кожен елемент є компактом.
+
+    Таким чином довели локальну компактність $X$.
+\end{proof}
+
+\section*{Ex 2.2.3}
+\begin{mdframed}
+    $X$ має зліченну базу в кожній точці.
+\end{mdframed}
+
+\begin{proof}
+    Фіксуємо $x\in X$. У точки є локальна карта $(U,\phi)$.\\
+    Let $y = \phi(x) \in \R^n$.
+    В $\R^n$ у кожної точки є зліченна база. Бізьмемо таку для точки $y$ та назвемо $A = \{A_i\}$.
+
+    Нехай $B = \{\phi^{-1}(A_i) : A_i \in A\}$.\\
+    $|B| \le |A|$, $B$ не більше ніж зліченна множина.
+    Далі, оскільки $\forall i: y\in A_i$, маємо $\forall B_i: x \in B_i = \phi^{-1}(A_i)$.
+    З іншого боку, оскільки $A$ - база в $\R^n$
+    \[\forall U_x \in \mathcal{N}(x): \exists A_i \in A: \phi(x) \in A_i \subset \phi(U_x)\]
+    А тому
+    \[\forall U_x \in \mathcal{N}(x): \exists B_i=\phi^{-1}(A_i) \in B: x \in B_i \subset U_x\]
+    
+    Отже, для довільної точки знайшлли зліченну множину околів, яка є базою.
+\end{proof}
+
+\section*{Ex 2.2.4}
+\begin{mdframed}
+    Нехай $X$ - многовид, $Y \subset X$.
+    Довести що $Y$ - також многовид.
+\end{mdframed}
+
+Розглянемо індуковану топологію на $Y$:
+\[(Y,\chi), \quad \chi = \{U\cap Y : U \in \tau\}\]
+Доведу, що $(Y,\chi)$ - також многовид.
+
+\begin{proof}
+    Візмемо довільну точку $x\in Y\subset X$.
+    $X$ - многовид, отож $\exists (U,\phi)$ - локальна карта з $X$, при чому\\
+    $\phi: U \to \R^n$ - homeomorphism.
+    Нехай $W = U\cap Y \subset U$. Розгляну обмеження $\phi|_W : W \to \phi(W)$. 
+    Покажемо, що $\phi|_W$ - також гомеомеорфізм.
+    
+    \[V \in \chi \implies V \in \tau\]
+    \[\forall V \subset \phi(W), V \in \tau_{\R^n}: \phi^{-1}(V) \subset W \land \phi^{-1}(V) \in \tau\]
+    \[\forall V \subset W, V \in \chi: \phi(V) \subset \phi(W), \phi(V) \in \tau_{\r^n}\]
+
+    Отже, для кожної точки знайшли локальну карту. Тому $Y$ - многовид.
+\end{proof}
+
+% \section*{Ex 2.2.7}
+% \begin{mdframed}
+%     $(U,\phi)$ - локальна карта.
+%     $\phi: U \to \R^n$ - homeomorphism.
+%     $V \subset U$ - відкрита.
+%     $\alpha:\R^n \to \R^n$ - довільний гомеомеорфізм.
+
+%     Довести, що $\alpha \circ \phi|_V : V \to \R^n$ також є локальною картою
+% \end{mdframed}
+% \begin{proof}
+    
+% \end{proof}
+
+
 
 \end{document}
 
