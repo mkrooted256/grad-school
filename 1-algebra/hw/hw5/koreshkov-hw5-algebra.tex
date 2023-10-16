@@ -54,8 +54,16 @@
 }
 \lstset{style=mystyle}
 
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = red %Colour of citations
+}
+
+
 \newcommand\course{MS1 - Algebra}
-\newcommand\hwnumber{HW 4}                   % <-- homework number
+\newcommand\hwnumber{HW 5}                   % <-- homework number
 \newcommand\idgroup{111-2023}                
 \newcommand\idname{Mykhailo Koreshkov}  
 
@@ -85,381 +93,255 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\F}{\mathbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
 \DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\cd}{CD}
 \DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\ob}{Ob}
+\DeclareMathOperator{\mor}{Mor}
+\DeclareMathOperator{\catring}{Ring}
 
+\newtheorem*{proposition}{Твердження}
+\newtheorem*{definition}{Визначення}
 
 \begin{document}
 
 
-\section*{Ex 4.1}
+\section*{Ex 5.1}
 \begin{mdframed}
-    \[a\oplus b = a+b-1; \quad a\odot b = a+b-ab\]
-    Довести, що $(\Z, \oplus, \odot)$ - кільце. Знайти нуль та одиницю.
+Нехай $R,S$ - кільця. Довести, що $(R\times S)^* = R^* \times S^*$
 \end{mdframed}
-
-\begin{enumerate}
-    \item Коректність операцій\\
-        $a+b-1 \in \Z$, $a+b-ab \in Z$
-    \item Асоціативність додавання\\
-        $(a\oplus b) \oplus c = (a+b-1) \oplus c = a+b-1 + c - 1 = a+b+c-2$\\
-        $a \oplus (b\oplus c) = a \oplus (b+c-1) = a+b+c-1-1 = a+b+c-2$
-    \item Нуль\\
-        $a \oplus (1) = a+1-1 = a$\\
-        $(1) \oplus a = 1+a-1 = a$\\
-        \[0_R = (1)\]
-    \item Зворотні елементи відносно додавання\\
-        $a\oplus (1-a) = a+1-a-1 = 0$\\
-        $(1-a)\oplus a = 1-a+a-1 = 0$
-    \item Комутативність додавання\\
-        $a \oplus b = a+b-1 = b+a-1 = b\oplus a$
-    \item Асоціативність множення\\
-        $(a\odot b) \odot c = (a+b-ab)+c-(a+b-ab)c = a+b-ab+c-ac-bc+abc = a+b+c-ab-ac-bc-abc$\\
-        $a\odot (b \odot c) = a + (b+c-bc) - a(b+c-bc) = a+b+c-bc-ab-ac-abc$
-    \item Існування одиниці\\
-        $a\odot (0) = a+0-0 = a$\\
-        $(0) \odot a = 0+a-0 = a$
-        \[1_R = (0)\]
-    \item Дистрибутивність\\
-        $(a\oplus b)\odot c = (a+b-1) + c - (a+b-1)c = a+c-ac +b+c-bc -1 = (a\odot c) \oplus (b\odot c)$\\
-        $c\odot (a\oplus b) = c + (a+b-1) - c(a+b-1) = (a\oplus b)\odot c$
-\end{enumerate}
-
-Отже, $(\Z, \oplus, \odot)$ дійсно Кільце.
-\[0_R = (1)\]
-\[1_R = (0)\]
-
-\newpage
-\section*{Ex 4.2}
-\begin{mdframed}
-    $R$ is an integral domain.\\
-    Довести, що $\ch R$ - просте.
-\end{mdframed}
-
-$\ch R = \begin{cases}
-    \min \{k\in\N \mid k\cdot 1_R = 0_R\}, & \exists k: k\cdot 1_R = 0_R\\
-    0, & \text{otherwise}
-\end{cases} $
-
-$R$ - область цілісності якщо $R$ - кільце без дільників нуля (окрім нуля).
-Тобто
-\[\forall a,b\in R: (ab=0) \implies (a=0) \vee (b=0)\]
 
 \begin{proof}
-    Нехай $1_R \ne 0_R$. \\
-    Припустимо, що $\ch R = n$ - не просте. 
-    Тобто $\exists k,l>1: n = kl$.\\
-    Нехай $a = k\cdot 1_R, \quad b = l\cdot 1_R$.
-    Також зверну увагу, що $k,l < n$.\\
-    Оскільки $n$ - найменше число таке, що $n\cdot 1_R=0_R$, $a\ne 0_R, b\ne 0_R$.
-
-    Розглянемо добуток $ab$
-    \[ab = (k\cdot 1_R) \cdot (l \cdot 1_R) = (\underset{k}{\underbrace{1+1+\cdots+1}}) \cdot (\underset{l}{\underbrace{1+1+\cdots+1}}) = \]
-    \[= \left(\underset{k}{\underbrace{(\underset{l}{\underbrace{1+1+\cdots+1}}) + (\underset{l}{\underbrace{1+1+\cdots+1}}) + \cdots + (\underset{l}{\underbrace{1+1+\cdots+1}})}}\right) = \]
-    \[= \underset{kl}{\underbrace{1+1+\cdots+1}} = n\cdot 1_R = 0_R\]
-    Що суперечить тому, що $R$ - область цілісності, адже $a\ne0_R, b\ne0_R$.
-
-    Таким чином довели, що $n$ - просте.
+    Let $P = R\times S$.
+    Розгляну $P^*$.
+    \[P^* = \{(r,s): r\in R, s\in S \& \exists (r',s'): (r,s)\cdot (r',s') = (1_R, 1_S)\}\]
+    \[(r,s)\cdot (r',s') = (rr',ss') = (1_R, 1_S) \iff r'=r^{-1}, s'=s^{-1}\]
+    Таким чином $p \in P^* \iff p \in R^*\times S^*$
 \end{proof}
 
-\newpage
-\section*{Ex 4.3}
+\section*{Ex 5.2}
 \begin{mdframed}
-    Довести, що якщо $R$ - область цілісності, то $R[x]$ також область цілісності
+    $R$ - кільце, $S \subset R, 0_R \in S, 1_R \in S$.
+    Нехай також
+    \[\forall a,b \in S: ab \in S\]
+    \[\forall a,b \in S: a-b = a+(-b) \in S\]
+    Довести, що $S$ -  підкільце $R$.
+\end{mdframed}
+
+\begin{mdframed}[backgroundcolor=blue!10]
+    \begin{proposition}[5.11]
+        $S$ - підкільце $R$ тоді і лише тоді коли
+        \begin{itemize}
+            \item $S$ замкнена відносно операцій на $R$
+            \item $\forall a\in S: -a \in S$
+        \end{itemize}
+        Замість другої умови існує еквівалентна: $-1_R\in S$
+    \end{proposition}
 \end{mdframed}
 
 \begin{proof}
-    \[\alpha,\beta \in R[x]\]
-    \[\alpha = a_0 + a_1x + a_2x^2 + ...\]
-    \[\beta = b_0 + b_1x + b_2x^2 + ...\]
+    Дано замкненість відносно множення. Доведу замкненість відносно додавання.\\
+    Дано
+    \[\forall a,b \in S: a-b = a+(-b) \in S\]
+    Покладу $a=0, b$ - довільне. З цього маємо
+    \[\forall b\in S: 0-b = 0+(-b) = -b \in S\]
+    Тобто $\forall b\in S: \exists -b \in S$ - існування зворотнього елемента в $S$.
+    Далі, для довільних $a,b\in S$:
+    \[\forall a,b\in S: a+b = a-(-b) \in S\]
+    Тобто, довели замкненість відносно додавання.
+
+    За твердженням 5.11, цього достатньо щоб $S$ було підкільцем $R$.
+\end{proof}
+
+\section*{Ex 5.3}
+\begin{mdframed}
+    $S = \{[0]_6, [3]_6\} \subset \Z/6\Z$\\
+    Відомо, що $S$ замкнена відносно операцій.
+    \begin{enumerate}
+        \item Чи є $S$ кільцем?
+        \item Чи є $S$ підкільцем $R$?
+    \end{enumerate}
+\end{mdframed}
+
+\subsection*{а) Чи є $S$ кільцем?}
+\begin{enumerate}
+    \item Коректність операцій - ОК
+    \item Асоціативність - ОК
+    \item Нуль: $O_S = O_R = [0]_6$
+    \item Обернені відносно додавання: $[3]_6+[3]_6=[6]_6=[0]_6$ - ОК
+    \item Комутативність додавання - ОК
+    \item Асоціативність множення - ОК
+    \item Одиниця: $[0]_6\cdot [3]_6 = 0, [3]_6\cdot [3]_6 = [9]_6 = [3]_6$
+    \[1_S = [3]_6\]
+    \item Дистрибутивність - ОК
+\end{enumerate}
+Отже, $S$ є кільцем
+
+\subsection*{б) Чи є $S$ підкільцем $R$?}
+Ні, $S$ не є підкільцем, бо $1_R = [1]_6 \notin S$, $1_R \ne 1_S$.
+
+\section*{Ex 5.4}
+\begin{mdframed}
+    Нехай $R$ - область цілісності.
+    Нехай $S$ - підкільце $R$.
+    Довести, що $S$ - також область цілісності. 
+\end{mdframed}
+
+\begin{proof}
+    Зауважу, що $0_R = 0_S = 0, 1_R = 1_S = 1$.\\
+    Припустимо, що $S$ - не область цілісності.
+    Тобто
+    \[\exists a,b\in S\subset R : a\ne 0_S, b\ne 0_S, ab = 0_S\]
+    Але це означає, що 
+    \[\exists a,b\in R: a\ne 0_R, b\ne 0_R, ab=0_R\]
+    що суперечить тому, що $R$ - область цілісності.
     
-    Позначимо $\deg \alpha$ найвищу степінь полінома з ненульовим коефіцієнтом або $-\infty$ якщо поліном нульовий.
-    Нехай $\deg \alpha = k, \deg \beta = l$.
-    Зауважу, що $a_k,b_l\ne 0$ (якщо $k,l\ne-\infty$).
-
-    Нехай
-    \[\alpha\beta = 0_{R[x]}\]
-    Нехай $\deg \alpha = k \ge 0$.
-    Припустимо, що $\deg \beta = l \ge 0$. Тоді $b_l \ne 0_R$.
-    \[\alpha\beta = ... + a_kb_lx^{k+l} = 0\]
-    \[a_kb_l = 0\]
-    Що суперечить тому, що $R$ - область цілісності.
-    Таким чином $\alpha \ne 0_{R[x]} \implies \beta = 0_{R[x]}$.
-
-    Аналогічно можна довести що $\beta \ne 0 \implies \alpha = 0$.
-
-    Отже, довели, що $R[x]$ - область цілісності
+    Таким чином довели, що $S$ - також область цілісності.
 \end{proof}
 
-\section*{Ex 4.4}
+\section*{Ex 5.5}
 \begin{mdframed}
-Нехай $\exists 0_R^{-1}$. Довести, що $R = \{0\}$.   
+    \[S = \{a+b\sqrt{2} : a,b\in \Q\}\]
+    Довести, що $S$ - підполе $\R$.
+
+    Тобто, $S$ - підкільце $\R$, що є полем.
 \end{mdframed}
+
 \begin{proof}
-    Нехай $z = 0_R^{-1}$. $z0_R = 0_Rz = 1_R$.\\
-    Відомо, що $\forall a\in R: a\cdot 0_R = 0_R$
+    Щоб довести, що $S$ - підкільце, достатньо довести замкненість відносно операцій та існування зворотніх елементів.
+    Нехай
+    \[x,y\in S, \qquad x=a_1 + b_1\sqrt{2}, \qquad y = a_2+b_2\sqrt{2}\]
+    Тоді
+    \[\forall x,y\in S: x+y = (a_1+a_2) + (b_1+b_2)\sqrt{2}, \quad (a_1+a_2)\in \Q, (b_1+b_2) \in \Q\]
+    \[\forall x,y\in S: xy = (a_1a_2 + 2b_1b_2) + (a_1b_2+b_1a_2)\sqrt{2}, \quad (a_1a_2 + 2b_1b_2)\in \Q, (a_1b_2+b_1a_2) \in \Q\]
+    Тобто, $S$ - замкнена відносно додавання та множення.
 
-    Візьмемо довільний $a\in R$
-    \[a = a \cdot 1_R = az0_R = (az)\cdot 0_R = 0_R\]
+    Також зауважу, що 
+    \[\forall x\in S: x+0_R = x = 0_R+x\]
+    \[\forall x\in S: x\cdot 1_R = x = 1_R\cdot x\]
+    Тобто, $1_R = 1_S, 0_R = 0_S$
 
-    Тобто $\forall a\in R: a=0_R$.
-    Кільце - тривіальне.
+    Існування обернених:
+    \[-1_R = -1 + 0\sqrt{2} \in S\]
+    або інакше
+    \[\forall x\in S, x=a+b\sqrt{2}: \exists y = (-a)+(-b)\sqrt{2} \in S: x+y=0_R=0_S\]
+
+    Отже, $S$ - підкільце $\R$. Залишається довести, що $S$ це поле. \\
+    Тобто, довести комутативність множення та існування оборотних елементів.
+    \[\forall x,y\in S: xy = (a_1+b_1\sqrt{2})(a_2+b_2\sqrt{2}) = (a_2+b_2\sqrt{2})(a_1+b_1\sqrt{2}) = yx\]
+
+    Let $a_1\ne 0, b_1 \ne 0$. Let
+    \[xy = (a_1+b_1\sqrt{2})(a_2+b_2\sqrt{2}) = (a_1a_2 + 2b_1b_2) + (a_1b_2+b_1a_2)\sqrt{2} = 1\]
+    тоді
+    \[\begin{cases}
+        a_1a_2 + 2b_1b_2 = 1\\
+        a_1b_2 + b_1a_2 = 0
+    \end{cases} \qquad \begin{cases}
+        \frac{a_2}{a_1} = -\frac{b_2}{b_1} = t\\
+        a_2 = ta_1\\
+        b_2 = -tb_1\\
+        ta_1^2 + 2tb_1^2 = t(a_1^2+2b_1^2) = 1
+    \end{cases}\]
+    \[\begin{cases}
+        a_2 = ta_1\\
+        b_2 = -tb_1\\
+        t = (a_1^2 + 2b_1^2)^{-1}
+    \end{cases}\]
+    Тобто
+    \[\forall x\in S, x\ne 0: x^{-1} = \frac{a_1-b_1\sqrt{2}}{a_1^2 + 2b_1^2}\]
+    Перевірка
+    \[(a+b\sqrt{2})\frac{a-b\sqrt{2}}{a^2 + 2b^2} = \frac{a^2 + 2b^2}{a^2 + 2b^2} = 1\]
+    Зауважу, що $(a_1^2 + 2b_1^2)^{-1} \in \Q$.
+
+    Отже, $S^* = S \setminus \{0_S\}$, тобто $S$ - поле.
+
+    Таким чином довели, що $S$ - підполе $\R$.
 \end{proof}
 
-\newpage
-\section*{Ex 4.5}
+\section*{Ex 5.6}
 \begin{mdframed}
-    \[R = (\R^+, \oplus, \odot)\]
-    \[\R^+ = \{x\in\R: x>0\}\]
-    \[a \oplus b = ab, \qquad a \odot b = x^{\ln y}\]
-\end{mdframed}
-\subsection*{a)}
-\begin{mdframed}
-    Довести що $R$ - кільце. Показати одиницю та нуль.
-\end{mdframed}
-\begin{enumerate}
-    \item Коректність операцій\\
-    $ab \in \R^+$, $x^{\ln y} \in R^+$
-    \item Асоціативність: \\
-    $(a \oplus b) \oplus c = abc = a \oplus (b\oplus c)$
-    \item Нуль: \\
-    $1 \oplus a = 1\cdot a = a = a \cdot 1 = a \oplus 1$\\
-    \begin{mdframed}[backgroundcolor=yellow!20]
-        \[0_R = 1\]
-    \end{mdframed}
-    \item Обернені відносно додавання:\\
-    $a \oplus (\frac{1}{a}) = 1$
-    \item Комутативність додавання:\\
-    $a \oplus b = ab = ba = b \oplus a$
-    \item Асоціативність множення:\\
-    $(a \odot b) \odot c = (a^{\ln b})^{\ln c} = a^{\ln b \cdot \ln c}$\\
-    $a \odot (b\odot c) = a^{\ln \left(b^{\ln c}\right)} = a^{\ln \left(e^{\ln b \cdot \ln c}\right)} = a^{\ln b \cdot \ln c}$
-    \item Одиниця:\\
-    $a \odot e = a^{\ln e} = a^1 = a$\\
-    $e \odot a = e^{\ln a} = a$\\
-    \begin{mdframed}[backgroundcolor=yellow!20]
-        \[1_R = e\]
-    \end{mdframed}
-    \item Дистрибутивність:\\
-    $a\odot (b\oplus c) = a^{\ln bc} = a^{\ln b + \ln c} = a^{\ln b}\cdot a^{\ln c} = (a\odot b) \oplus (a\odot c)$\\
-    $(a\oplus b)\odot c = (ab)^{\ln c} = a^{\ln c} \cdot b^{\ln c} = (a\odot c) \oplus (b\odot c)$
-\end{enumerate}
-
-\subsection*{б) Комутативність кільця}
-\[a \odot b = a^{\ln b} = \left(e^{\ln a}\right)^{\ln b} = e^{\ln a \cdot \ln b} = \left(e^{\ln b}\right)^{\ln a} = b^{\ln a} = b \odot a\]
-Отже, кільце є комутативним.
-
-\subsection*{в) Дільники нуля}
-Припустимо, що $ab = 0_R = 1$.
-\begin{gather*}
-    a\odot b = e^{\ln a \cdot \ln b} = 0_R = 1 = e^{0}\\
-    \ln a \cdot \ln b = 0\\
-    \ln a = 0 \vee \ln b = 0\\
-    a = 1 \vee b = 1
-\end{gather*}
-
-Тобто, $ab=0_R \implies a=0_R \vee b=0_R$. Отже, кільце без дільників нуля.
-
-\subsection*{г) Оборотні елементи}
-Покажу, що існують обернені елементи:
-\begin{gather*}
-    a\odot b = e^{\ln a \cdot \ln b} = e^{1} = e\\
-    \ln a \cdot \ln b = 1\\
-    \ln b = \frac{1}{\ln a}\\
-    b = e^{\frac{1}{\ln a}} > 0\\
-    \ln a \in \R; \quad (\ln a)^{-1} \in R; \quad e^{\R} = \R^+
-\end{gather*}
-Єдина особлива точка - $\ln a = 0$ або $a = 1 = 0_R$.
-Отже, 
-\[\forall a\in R, a\ne 1=0_R: \exists a^{-1} = e^{\frac{1}{\ln a}}\]
-Тобто
-\[R^* = R\setminus \{0_R\}\]
-
-\section*{Ex 4.6}
-\begin{mdframed}
-    \[\F_2 = \Z/2\Z\]
-    \[\text{Let } \F_4 = \left\{\begin{pmatrix}
-        a & b \\ b & a+b
-    \end{pmatrix}\in M_2(\F_2)\right\}\]
+    Нехай $f: R\to S$ - гомоморфізм кілець.
+    Довести:
+    \begin{itemize}
+        \item $f(b-a) = f(b)-f(a)$
+        \item $f(-a) = -f(a)$
+    \end{itemize}
 \end{mdframed}
 
-\subsection*{а) Довести що $\F_4$ - кільце.}
-Нехай 
-\begin{gather*}
-    A,B,C \in \F_4, \quad 
-    A = \begin{pmatrix}
-        a_1 & a_2\\ a_2 & a_1 + a_2
-    \end{pmatrix}, \quad
-    B = \begin{pmatrix}
-        b_1 & b_2 \\ b_2 & b_1 + b_2
-    \end{pmatrix}
-\end{gather*}, $C$ аналогічно.
+\begin{proof}
+    $f$ - гомоморфізм, тобто
+    \begin{gather*}
+        f(a+b) = f(a)+f(b)\\
+        f(ab) = f(a)f(b)
+    \end{gather*}
 
-Зауважу, що для $a,b\in\F_2$ виконуються наступні властивості:
-\begin{gather*}
-    ab = ba,\qquad a+a = 0
-\end{gather*}
+    \begin{enumerate}
+        \item Доведу $f(-a) = -f(a)$ довівши, що $f(a) + f(-a) = 0_S$.
+        \[f(a) + f(-a) = f(a+(-a)) = f(0_R) = 0_S\]
+        Тобто дійсно $-f(a) = f(-a)$
+        
+        \item Доведу $f(b-a) = f(b)-f(a)$\\
+        \[f(b)-f(a) = f(b)+(-f(a)) = f(b) + f(-a) = f(b+(-a)) = f(b-a)\]
+    \end{enumerate}
+ 
+\end{proof}
 
-\begin{enumerate}
-    \item Коректність операцій\\
-    \[C = A+B = \begin{pmatrix}
-        a_1 + b_1 & a_2 + b_2 \\ a_2 + b_2 & (a_1 + b_1) + (a_2 + b_2)
-    \end{pmatrix} \in R\]
-    $c_{12} = c_{21}, c_{22} = c_{11}+c_{12}$.
-    Додавання коректне.
-    \[C = AB = 
-    \begin{pmatrix}
-        a_1 & a_2 \\ a_2 & a_1 + a_2
-    \end{pmatrix} 
-    \begin{pmatrix}
-        b_1 & b_2\\ b_2 & b_1 + b_2
-    \end{pmatrix} = 
-    \begin{pmatrix}
-        a_1b_1 + a_2b_2 & a_1b_2 + a_2b_1 + a_2b_2 \\ b_1a_2 + a_1b_2 + a_2b_2 & a_2b_2 + a_1b_1 + a_1b_2 + a_2b_1 + a_2b_2 
-    \end{pmatrix}\]
-    $c_{12} = c{21}$.
-    \[c_{22} = \cancel{a_2b_2} + a_1b_1 + \cancel{a_1b_2} + \cancel{a_2b_1} + \cancel{b_2b_2}  = a_1b_1 \]
-    \[c_{11}+c_{12} = a_1b_1+ \cancel{a_2b_2}+\cancel{a_1b_2} + \cancel{a_2b_1} + \cancel{a_2b_2} = a_1b_1 = c_{22}\]
-    Множення коректне.
 
-    \item Асоціативність: наслідується з властивостей матричних операцій та $\F_2$
-    \item Нуль: наслідується з властивостей матричних операцій та $\F_2$
-    \[0_R = \begin{pmatrix}
-        0 & 0 \\ 0 & 0
-    \end{pmatrix} \in R\]
-    \item Обернені відносно додавання:\\
-    \[A + A = \begin{pmatrix}
-        a_1 + a_1 & a_2 + a_2 \\ a_2 + a_2 & a_1 + a_1 + a_2 + a_2
-    \end{pmatrix} = 0_R\] з властивості $\forall a\in\F_2: a+a=0$
-    \item Комутативність додавання: наслідується з властивостей матричних операцій та $\F_2$
-    \item Асоціативність множення: наслідується з властивостей матричних операцій та $\F_2$
-    \item Одиниця: наслідується з властивостей матричних операцій та $\F_2$
-    \[A \cdot \begin{pmatrix}
-        1 & 0 \\ 0 & 1
-    \end{pmatrix} = A = \begin{pmatrix}
-        1 & 0 \\ 0 & 1
-    \end{pmatrix} \cdot A;\qquad
-    1_R = \begin{pmatrix}
-        1 & 0 \\ 0 & 1
-    \end{pmatrix} \in R\]
-    \item Дистрибутивність: наслідується з властивостей матричних операцій та $\F_2$.
-\end{enumerate}
-
-\subsection*{б) Довести що $\F_4$ - це поле, що складається з 4 елементів}
-Зауважу, що $\F_2 = \{0,1\}$.
-Елемент $\F_4$ залежить від двох значень - $a,b$. Кожне приймає значення $0,1$. Переберу всі можливі комбінації $a,b$.
-Позначатиму $f(a,b) = \begin{pmatrix}
-    a & b \\ b & a+b
-\end{pmatrix}, \quad a,b\in\F_2$
-\begin{gather*}
-    f(0,0) = \begin{pmatrix}
-        0 & 0 \\ 0 & 0
-    \end{pmatrix} = 0_R,
-    \qquad
-    f(1,0) = \begin{pmatrix}
-        1 & 0 \\ 0 & 1
-    \end{pmatrix} = 1_R,\\
-    f(0,1) = \begin{pmatrix}
-        0 & 1 \\ 1 & 1
-    \end{pmatrix} = \alpha,
-    \qquad
-    f(1,1) = \begin{pmatrix}
-        1 & 1 \\ 1 & 0
-    \end{pmatrix} = \beta
-\end{gather*}
-
-Поле - це комутативне кільце з $R^* = R\setminus \{0_R\}$.
-
-Комутативність:
-\[AB = \begin{pmatrix}
-    a_1b_1 + a_2b_2 & a_1b_2 + a_2b_1 + a_2b_2 \\ b_1a_2 + a_1b_2 + a_2b_2 & a_2b_2 + a_1b_1 + a_1b_2 + a_2b_1 + b_2b_2 
-\end{pmatrix} = \begin{pmatrix}
-    a_1b_1 + a_2b_2 & a_2b_2 \\ a_2b_2 & a_1b_1
-\end{pmatrix}\]
-\[BA = \begin{pmatrix}
-    b_1a_1 + b_2a_2 & b_2a_2 \\ b_2a_2 & b_1a_1
-\end{pmatrix} = AB\]
-
-Обернені елементи:
-\[\alpha\beta = \begin{pmatrix}
-    0 & 1 \\ 1 & 1
-\end{pmatrix}\begin{pmatrix}
-    1 & 1 \\ 1 & 0
-\end{pmatrix} = \begin{pmatrix}
-    0\cdot 1 + 1\cdot 1 & 0\cdot 1 + 1\cdot 0 \\
-    1\cdot 1 + 1\cdot 1 & 1\cdot 1 + 0\cdot 1
-\end{pmatrix} = \begin{pmatrix}
-    1 & 0 \\ 0 & 1
-\end{pmatrix} = 1_R\]
-Отже, $\alpha^{-1} = \beta$.
-
-\[R^* = \{1_R, \alpha, \beta\} = R\setminus \{0_R\}\]
-
-Таким чином, $\F_4$ - дійсно поле з 4 елементів.
-
-\section*{Ex 4.7}
+\section*{Ex 5.7}\label{ex5.7}
 \begin{mdframed}
-    $\alpha \in \mathbb H, \quad \alpha = a+bi+cj+dk \ne 0, \qquad \alpha^{-1} = ?$
+    Нехай $\sigma: \Z \to R$ - гомоморфізм, $R$ - кільце.
+    \[\sigma(k) = k\cdot 1_R\]
+    Довести, що $\sigma$ - єдиний гомоморфізм.
 \end{mdframed}
 
-Зауважу, що $0_H = 0 + 0i + 0j + 0k$, $1_H = 1 + 0i + 0j + 0k$.
+\begin{proof}
+    Нехай $\phi: \Z \to R$ - довільний гомеоморфізм.
+    Тоді
+    \[\forall k\in\Z, k>0: \phi(k) = \phi(\underbrace{1+1+\cdots+1}_k) = \underbrace{\phi(1) + \phi(1) + \cdots + \phi(1)}_k 
+    = k \cdot \phi(1) = k \cdot 1_R\]
+    \[\phi(0) = 0_R = 0\cdot 1_R\]
+    \begin{align*}
+        \forall k\in\Z, k<0: \phi(k) &= \phi(\underbrace{(-1)+(-1)+\cdots+(-1)}_{|k|}) = \\
+        &= \underbrace{\phi(-1) + \phi(-1) + \cdots + \phi(-1)}_{|k|} = |k| \cdot \phi(-1) = \\
+        &= |k| \cdot (-1_R) = k \cdot 1_R
+    \end{align*}
+    Тобто, $\forall k\in\Z: \phi(k) = k\cdot 1_R$, а отже, $\phi = \sigma$
+\end{proof}
 
-% Введу нове позначення
-% \[\alpha = a+bi+cj+dk = (r, \vec v); \quad r=a; \; \vec v = (b,c,d)\]
-% Тоді 
-% \[\alpha + \beta = (r+r', \vec v+\vec v')\]
-% \[\alpha\beta = (rr'-\vec v\cdot \vec v', r\vec v' + r'\vec v + \vec v \times \vec v')\]
-% Ці тотожності легко доводяться використовуючи Дистрибутивність та таблицю множення $e,i,j,k$ між собою.
+\section*{Ex 5.8}
 
-% \begin{gather*}
-%     \alpha\beta = (rr'-\vec v\cdot \vec v', r\vec v' + r'\vec v + \vec v \times \vec v') = 1\\
-%     rr'-\vec v\cdot \vec v' = 1, \qquad r\vec v' + r'\vec v + \vec v \times \vec v' = \vec 0\\
-%     r = \frac{1+v\cdot v'}{r'}\\
-%     \frac{1+v\cdot v'}{r'}\cdot v' + r'v + v\times v' = 0\\
-%     (1+v\cdot v')\cdot v' + (r')^2v + r'(v\times v') = 0\\
-%     \text{Let } u = v\times v', \quad p = 1+v\cdot v';\\
-%     r' = \frac{}{}
-% \end{gather*}
+\begin{definition}[Ініціальний об'єкт]
+    Ініціальний об'єкт категорії $\mathcal A$:
+    \[A \in \ob \mathcal A: \forall B \in \ob \mathcal A: \exists! f \in \mor(A,B)\]
+\end{definition}
+\begin{definition}[Термінальний об'єкт]
+    Термінальний об'єкт категорії $\mathcal A$:
+    \[D \in \ob \mathcal A: \forall C \in \ob \mathcal A: \exists! g \in \mor(C,D)\]
+\end{definition}
+\begin{definition}[Категорія $\catring$]
+    Категорія кілець та гомоморфізмів кілець
+\end{definition}
+\begin{proposition}[Про ініціальний об'єкт категорії $\catring$]
+    З \hyperref[ex5.7]{Ex 5.7} випливає, що $\Z$ - ініціальний об'єкт.
+\end{proposition}
 
-\[\alpha = a_1+b_1i+c_1j+d_1k\]
-\[\beta = a_2+b_2i+c_2j+d_2k;\]
-\[\alpha\beta = 
-\begin{matrix}
-    {}&a_{1}a_{2}&-b_{1}b_{2}&-c_{1}c_{2}&-d_{1}d_{2}\\
-    {}+{}(&a_{1}b_{2}&+b_{1}a_{2}&+c_{1}d_{2}&-d_{1}c_{2})\mathbf{i} \\
-    {}+{}(&a_{1}c_{2}&-b_{1}d_{2}&+c_{1}a_{2}&+d_{1}b_{2})\mathbf{j} \\
-    {}+{}(&a_{1}d_{2}&+b_{1}c_{2}&-c_{1}b_{2}&+d_{1}a_{2})\mathbf{k} 
-\end{matrix}
-\]
+\begin{mdframed}
+    Вказати термінальний об'єкт категорії $\catring$ або довести що його не існує.
+\end{mdframed}
 
-% Нехай $\alpha\beta=1$.
-% Тоді
-% \begin{gather*}
-%     \begin{cases}
-%         a_{1}a_{2}-b_{1}b_{2}-c_{1}c_{2}-d_{1}d_{2} = 1\\
-%         a_{1}b_{2}+b_{1}a_{2}+c_{1}d_{2}-d_{1}c_{2} = 0\\
-%         a_{1}c_{2}-b_{1}d_{2}+c_{1}a_{2}+d_{1}b_{2} = 0\\
-%         a_{1}d_{2}+b_{1}c_{2}-c_{1}b_{2}+d_{1}a_{2} = 0
-%     \end{cases}
-% \end{gather*}
+Я припускаю, що термінальним об'єктом буде $T = \{0_T\}$.
+Перевіримо.
 
-В комплексних числах $z^{-1} = \frac{\bar z}{|z|^2}$. \\
-Спробую побудувати тут зворотній елемент за аналогією.
+Нехай $R$ - довільне кільце. Існує лише єдине відображення $\alpha: R\to T$: $\alpha(a) = 0_T$.
+\begin{itemize}
+    \item $\alpha(0_R) = 0_T, \alpha(1_R) = 0_T = 1_T$
+    \item $\alpha(a+b) = 0_T = \alpha(a) + \alpha(b) = 0_T + 0_T = 0_T$
+    \item $\alpha(ab) = 0_T = \alpha(a)\alpha(b) = 0_T\cdot 0_T = 0_T$
+\end{itemize}
+Тобто, $\alpha$ - дійсно гомоморфізм кілець і це єдиний гомоморфізм на $T$.
 
-Нехай $\beta = \frac{a-bi-cj-dk}{a^2+b^2+c^2+d^2}$. Обчислимо добуток $\alpha\beta = \gamma = a'+b'i+c'j+d'k$
-\begin{gather*}
-    a' = a_{1}a_{2}-b_{1}b_{2}-c_{1}c_{2}-d_{1}d_{2} = \frac{1}{a^2+b^2+c^2+d^2}\left(a^2+b^2+c^2+d^2\right) = 1\\
-    b' = a_{1}b_{2}+b_{1}a_{2}+c_{1}d_{2}-d_{1}c_{2} = \frac{1}{a^2+b^2+c^2+d^2}\left(-ab+ba-cd-(-dc)\right) = 0\\
-    c' = a_{1}c_{2}-b_{1}d_{2}+c_{1}a_{2}+d_{1}b_{2} = \frac{1}{a^2+b^2+c^2+d^2}\left(-ac-(-bd)+ca-db\right) = 0\\
-    d' = a_{1}d_{2}+b_{1}c_{2}-c_{1}b_{2}+d_{1}a_{2} = \frac{1}{a^2+b^2+c^2+d^2}\left(-ad-bc-(-cb)+da\right) = 0\\
-    \alpha\beta = 1+0i+0j+0k = 1_H
-\end{gather*}
-
-Отже, обернений елемент для $\alpha$ це 
-\[\alpha^{-1} = \frac{\alpha^*}{|\alpha|^2},\]
-де 
-\[\alpha^* = a-bi-cj-dk, \qquad |\alpha| = a^2+b^2+c^2+d^2\] 
+Отже, тривіальне кільце $T$ - дійсно термінальний об'єкт категорії $\catring$
 
 \end{document}
 
