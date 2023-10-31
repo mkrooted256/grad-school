@@ -1,0 +1,303 @@
+\documentclass[11pt, a4paper]{article} % use larger type; default would be 10pt
+
+\usepackage{fontspec} % Font selection for XeLaTeX; see fontspec.pdf for documentation
+\defaultfontfeatures{Mapping=tex-text} % to support TeX conventions like ``---''
+\usepackage{xunicode} % Unicode support for LaTeX character names (accents, European chars, etc)
+\usepackage{xltxtra} % Extra customizations for XeLaTeX
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,patterns}
+
+
+% other LaTeX packages.....
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd,systeme}
+\usepackage{unicode-math}
+\usepackage{cancel}
+\geometry{a4paper} 
+%\usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+
+
+\usepackage{faktor}
+
+
+% FONTS
+% \setmainfont[Ligatures=TeX]{Cambria Math} % set the main body font (\textrm), assumes Charis SIL is installed
+%\setsansfont{Deja Vu Sans}
+% \setmonofont[Ligatures=TeX]{Fira Code}
+\setmathfont[Ligatures=TeX]{NewCMMath-Regular}
+
+\setmainfont{Cambria}
+\setmonofont[Ligatures=TeX]{Roboto Mono}
+
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+\lstdefinestyle{mystyle}{
+    % backgroundcolor=\color{backcolour},   
+    % commentstyle=\color{codegreen},
+    % keywordstyle=\color{magenta},
+    % numberstyle=\tiny\color{codegray},
+    % stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = red %Colour of citations
+}
+
+
+\newcommand\course{MS1 - Algebra}
+\newcommand\hwnumber{HW 7}                   % <-- homework number
+\newcommand\idgroup{111-2023}                
+\newcommand\idname{Mykhailo Koreshkov}  
+
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfsetup{%
+	backgroundcolor = black!5,
+}
+\mdfdefinestyle{ans}{%
+    backgroundcolor = green!5,
+    linecolor = green!50,
+    linewidth = 1pt,
+}
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\idgroup \\ \idname}
+\chead{\textbf{\Large \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\linespread{1.1}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\cd}{CD}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\ob}{Ob}
+\DeclareMathOperator{\mor}{Mor}
+\DeclareMathOperator{\catring}{Ring}
+
+\newtheorem*{proposition}{Твердження}
+\newtheorem*{definition}{Визначення}
+
+\begin{document}
+
+
+\section*{Ex 7.1}
+\begin{mdframed}
+Нехай $R,S$ - кільця. Нехай $I$ - ідеал в $R$, $J$ - ідеал в $S$.\\
+Довести що $I \times J$ - ідеал в $R \times S$
+\end{mdframed}
+
+\begin{mdframed}[backgroundcolor=blue!10]
+    $I$ - (двосторонній) ідеал кільця $R$ якщо $I$ \textbf{замкнена 
+    відносно додавання} та виконується \textbf{властивість поглинання}:
+    \[\forall a \in R: aI \subset I, Ia \subset I,\]
+    де $aI = \{ai : i\in I\}$, $Ia = \{ia : i\in I\}$
+\end{mdframed}
+
+\begin{proof}
+    Маємо 
+    \[\forall a,b \in I: a+b \in I; \qquad \forall a,b \in J: a+b \in J\]
+    \[\forall a\in R, u\in I: au \in I\]
+    \[\forall b\in S, v\in J: bv \in J\]
+
+    Тоді розглянемо $K = I \times J \subset R \times S$
+    \[\forall x=(a,b),y=(c,d) \in I \times J: x+y = (a+c, b+d)\]
+    З замкненості ідеалів $I,J$:
+    \[a+c \in I, \quad b+d \in J\]
+    тобто
+    \[x+y = (a+c, b+d) \in I \times J\]
+    Довели замкненість $K$ відносно додавання.
+
+    \[\forall x=(a,b) \in R \times S, \; y=(u,v) \in I \times J: xy = (au, bv)\]
+    З властивості поглинання ідеалів
+    \[au \in I, \quad bv \in J\]
+    тобто
+    \[xy = (au, bv) \in I \times J\]
+
+    Таким чином довели, що $I \times J$ - відповідний (правий, лівий, чи двосторонній) ідеал кільця $R \times S$.
+\end{proof}
+
+\newpage
+\section*{Ex 7.2}
+\begin{mdframed}
+    $\{I_\alpha\}_{\alpha\in A}$ - довільна множина ідеалів кільця $R$ (не обов'язково всі ідеали кільця, просто деякі).
+
+    Довести, що 
+    \begin{itemize}
+        \item $I = \cap_{\alpha\in A} I_\alpha$ - ідеал $R$
+        \item $\forall B\subset R: \exists I$ - ідеал $R: \left(B \subset I\right) \land \left(J \text{ - ideal} \land (B \subset J) \implies I \subset J\right)$.\\
+        Тобто існує $I$ - найменший ідеал $R$ що містить $B$.
+    \end{itemize}
+\end{mdframed}
+
+\begin{proof}[Доведення 1.]
+    За визначенням перетину множин,
+    \[I = \{x \in R: \forall \alpha \in A: x \in I_\alpha\}\]
+    тобто це елементи кільця $R$ що містяться одночасно в усіх ідеалах $I_\alpha$. 
+
+    Розглянемо довільну суму елементів $I$. Нехай $a,b \in I$.\\
+    Зрозуміло, що $a,b$ є елементами одночасно всіх ідеалів $I_\alpha$ і виконується
+    \[\forall \alpha\in A: a+b \in I_\alpha\]
+    Тобто, за визначенням,
+    \[a+b \in I\]
+    Довели замкненість $I$ відносно додавання.
+
+    Нехай $a \in R, u \in I$.\\
+    Знову, зауважу, що $u$ є елементом одночасно всіх ідеалів $I_\alpha$.
+    Справедливо
+    \[\forall \alpha\in A: au \in I_\alpha\]
+    Тобто, за визначенням
+    \[au \in I\]
+    Довели властивість поглинання для $I$.
+
+    Таким чином довели, що $I$ - дійсно ідеал кільця $R$.
+\end{proof}
+
+\begin{proof}[Доведення 2.]
+    Розгляну множину $T = \{I: I$ - ідеал $R\}$ всіх ідеалів кільця.
+    % На ній можна задати частковий порядок за відношенням вкладення множин, тобто $(T, \subseteq)$.
+    % Це дійсно частковий порядок (рефлексивність, транзитивність, антисиметричність), але не повний.
+
+    Для довільної підмножини $B \subseteq R$ розгляну множини
+    \[T_B = \{I \in T: B \subseteq I\}\]
+    \[I_B = \bigcap_{I \in T_B}I\]
+
+    З першого пункту, $I_B$ - також ідеал $R$. Доведу, що він дійсно найменший з усіх, що містить $B$.
+
+    Нехай $J$ - ідеал кільця $R$, такий що $B \subseteq J$.\\
+    Зрозуміло, що $J \in T_B$ за побудовою $T_B$. Тоді $I_B \subseteq J$ як перетин сім'ї множин що містить $J$.\\
+    Тобто маємо
+    \[\forall J \text{ - ideal of } R : (B \subset J) \implies I_B \subset J\]
+    
+    Таким чином довели, що $I=I_B$ - дійсо найменший ідеал що містить $B$.
+\end{proof}
+
+
+\section*{Ex 7.3}
+\begin{mdframed}
+    Нехай $I,J$ - ідеали кільця $R$.\\
+    Нехай $I \cup J$ задовільняє властивості поглинання.\\
+    Показати, що $I\cup J$ в загальному випадку не буде ідеалом $R$.
+\end{mdframed}
+
+За критерієм ідеалу, множині $I \cup J$ не вистачає замкненості відносно додавання.
+
+Маємо
+\[\forall a\in R, u \in I, v \in J: au \in I, av \in J\]
+\[\forall a\in R, u \in (I\cup J): au \in (I \cup J)\]
+
+Побудуємо відображення $f : R \to R$ таке що $f(x)\cdot f(y) = f(x\cdot y)$, але $\exists x,y: f(x)+f(y) \ne f(x+y)$.
+
+Зауважу, що $\forall n\in\N: n\Z = \{nk : k\in \Z\}$ є ідеалом $\Z$:
+\[\forall a,b\in n\Z: a+b = n(k_a + k_b) \in n\Z\]
+\[\forall x\in\Z, u\in n\Z: xu = xnk = n(xk) \in n\Z\]
+
+Нехай
+\[A = 2\Z \cup 3\Z\]
+\[\forall a \in A: \left[\begin{array}{l}
+    \exists k\in Z: a = 2k\\
+    \exists k\in Z: a = 3k
+\end{array} \right.\]
+Тоді
+\[\forall x \in \Z, a \in A: \left[\begin{array}{l}
+    xa = x\cdot 2k = 2kx = 2l\\
+    xa = x\cdot 3k = 3kx = 3l
+\end{array} \right. \implies xa \in A\]
+тобто, $A$ має властивість поглинання.
+
+Але для $a=2, b=3 \in A$ маємо
+\[a+b = 5 \notin A\]
+Тобто, $A$ не замкнена відносно додавання.
+
+Отже, показали, що $I\cup J$ в загальному випадку не буде ідеалом.
+
+\section*{Ex 7.4}
+\begin{mdframed}
+    Нехай $I$ - ідеал кільця $\Z$.\\
+    Довести, що $\exists n\in\Z: I = n\Z$.
+\end{mdframed}
+
+\begin{proof}
+    Нехай $I$ - ідеал кільця $\Z$.
+
+    Розгляну $A = \{a \in I : a > 0\} \subset \N$.\\
+
+    Припустимо, що $A = \varnothing$. Тоді $\forall a \in I: a \le 0$. 
+    Але тоді $(-1) \cdot a \notin I$, тобто не виконується властивість поглинання. 
+    Отже, множина $A$ непорожня.
+
+    Тоді $A$ має найменший елемент $m = \min \{a \in I: a>0\}$ як непорожня підмножина цілком впорядкованої $\N$.
+
+
+    Припустимо, що $m=1$. Тоді $\forall k \in \Z: k\cdot 1 = k \in I$ з чого $I = \Z = (1) = 1\Z$\\
+    Далі вважаємо, що $m\ge 2$.\\
+
+    З одного боку, з властивості поглинання та оскільки $m \in I$ 
+    \[\forall k \in \Z: km \in I\]
+    \[(m) \subseteq I\]
+    де $(m)=m\Z$ - головний ідеал в $\Z$, породжений $m$.\\
+
+    Нехай $a \in I$. Виконаю ділення з остачею на $m$:
+    \[a = mk + r, \quad k\in\Z, 0\le r < m\]
+    Тоді
+    \[a-r = mk \implies (a-r) \in (m) \subseteq I\]
+    \[\begin{cases}
+        a \in I\\
+        (a-r) \in I
+    \end{cases} \implies r \in I\]
+    За визначенням $m$,
+    \[\forall u \in I: u>0 \implies m \le u\]
+    З іншого боку, $0 \le r < m$ з визначення остачі.
+    Маємо
+    \[\begin{cases}
+        0 \le r < m\\
+        r>0 \implies r \ge m
+    \end{cases} \implies r=0\]
+    отож, ділення виконується без остачі
+    \[\forall a\in I: \exists k\in\Z: a = mk \in (m)\]
+    \[I \subseteq (m)\]
+
+    Маємо $(m) \subseteq I \land I \subseteq (m)$
+    \[I = (m),\]
+    де $m = \min \{a \in I: a>0\}$
+\end{proof}
+
+\section*{Ex 7.5}
+\begin{mdframed}
+    
+\end{mdframed}
+
+
+
+\end{document}
+
