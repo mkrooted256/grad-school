@@ -250,16 +250,16 @@
 \begin{proof}
     Нехай $I$ - ідеал кільця $\Z$.
 
-    Розгляну $A = \{a \in I : a > 0\} \subset \N$.\\
+    Розгляну $A = \{a \in I : a > 0\} \subset \N$. Зверну увагу, що $0\in I$ завжди.
 
     Припустимо, що $A = \varnothing$. Тоді $\forall a \in I: a \le 0$. 
-    Але тоді $(-1) \cdot a \notin I$, тобто не виконується властивість поглинання. 
-    Отже, множина $A$ непорожня.
+    Але тоді для ненульових $a$ виконується $(-1) \cdot a \notin I$, тобто не виконується властивість поглинання. \\
+    З цьго, $I = (0) = \{0\}$ - головний ідеал.
 
+    Далі розглядаємо ненульові ідеали, для яких множина $A$ буде не порожнюю.\\
     Тоді $A$ має найменший елемент $m = \min \{a \in I: a>0\}$ як непорожня підмножина цілком впорядкованої $\N$.
 
-
-    Припустимо, що $m=1$. Тоді $\forall k \in \Z: k\cdot 1 = k \in I$ з чого $I = \Z = (1) = 1\Z$\\
+    Припустимо, що $m=1$. Тоді $\forall k \in \Z: k\cdot 1 = k \in I$ з чого $I = \Z = (1) = 1\Z$.\\
     Далі вважаємо, що $m\ge 2$.\\
 
     З одного боку, з властивості поглинання та оскільки $m \in I$ 
@@ -292,12 +292,135 @@
     де $m = \min \{a \in I: a>0\}$
 \end{proof}
 
+\newpage
 \section*{Ex 7.5}
 \begin{mdframed}
-    
+    Нехай $R$ - кільце, $I$ - ідеал $R$.
+    Довести
+    \begin{enumerate}
+        \item $I[x]$ - ідеал $R[x]$
+        \item $R[x]/I[x] \cong (R/I)[x]$
+    \end{enumerate}
 \end{mdframed}
 
+Критерій ідеалу - замкненість відносно додавання та властивість поглинання.
 
+Нехай $f,g \in I[x] \subset R[x]$.
+\[f = f_0 + f_1x + ... + f_rx^r, \quad f_i \in I\]
+\[g = g_0 + g_1x + ... + g_sx^s, \quad g_i \in I\]
+Нехай $r \le s$.
+\[f+g = \sum_{i=0}^r (f_i + g_i)x^i + \sum_{i=r+1}^s g_i x^i\]
+$\forall i=\overline{0,r}: f_i+g_i \in I$, бо $I$ замкнений відносно додавання. $\forall i=\overline{r+1,s}: g_i \in I$.
+Маємо, що всі коефіцієнти в $I$, отже $(f+g) \in I[x]$. \\
+Довели замкненість відносно додавання.
+
+Нехай $f \in R[x], g \in I[x]$.
+\[f = f_0 + f_1x + ... + f_rx^r, \quad f_i \in R\]
+\[g = g_0 + g_1x + ... + g_sx^s, \quad g_i \in I\]
+\[(f \cdot g) = \sum_{n=0}^{r+s} \left(\sum_{\substack{i=\overline{0,r} \\ j=\overline{0,s} \\ i+j=n}} f_i \cdot g_j\right) x^n\]
+
+Кожен доданок внутнішньої суми $f_i \cdot g_j \in I$ бо $g_j \in I$, а $I$ має властивість поглинання.\\
+Сума доданків $\sum_{i,j} f_i\cdot g_j \in I$ через замкненість ідеалу відносно додавання.\\
+Маємо, що кожен коефіцієнт при $x^n$ належить ідеалу. Отже, $(f\cdot g)\in I[x]$, тобто, довели властивість поглинання.\\
+Аналогічно для множення з іншого боку.
+
+\begin{mdframed}[backgroundcolor=green!20]
+    Довели, що $I[x]$ - ідеал $R[x]$
+\end{mdframed}
+
+Для того щоб довести, що $(R/I)[x] \cong R[x]/I[x]$ згідно першої теореми про ізоморфізм достатньо 
+побудувати сур'єктивний гомоморфізм $\phi : R[x] \to (R/I)[x]$ із $\ker \phi = I[x]$.
+
+Нехай 
+\[\pi : R \to R/I, \quad \pi(a) = a+I,\]
+\[\phi(\sum_{i=0}^n a_i x^i) = \sum_{i=0}^n \pi(a_i)x^i \in (R/I)[x]\]
+
+Доведемо, що $\ker \phi = I[x]$ (with a slight abuse of notation)
+\[\phi(I[x]) = \sum_{i=0}^n \pi(I)x^i =\sum_{i=0}^n 0_{R/I} \cdot x^i = 0 \in (R/I)[x]\]
+В зворотній бік, нехай $\phi(f) = 0$.
+\[\phi(f) = \sum_{i=0}^n \pi(f_n)x^i = 0 \in (R/I)[x]\]
+\[\forall i: \pi(f_i) = 0\]
+\[\forall i: f_i \in I\]
+Тобто, $f \in I$. Таким чином довели, що $\ker \phi = I[x]$.
+
+Доведемо, що $\phi$ сюр'єктивне.\\
+Візьмемо довільний $g \in (R/I)[x]$.
+Нехай $g = \sum_{k=0}^n g_k x^k$, $g_k \in R/I$.\\
+Нехай $\tau : R/I \to R, \quad \tau(a + I) = a$ - довільний представник класу суміжності. ($\pi \circ \tau = id_{R/I}$)
+\[\sum_{k=0}^n \tau(g_k) x^k \in R\]
+\[\phi(\sum_{k=0}^n \tau(g_k) x^k) = \sum_{k=0}^n (\pi\circ\tau)(g_k) x^k = g\]
+Тобто, знайшли прообраз для будь якого $g \in (R/I)[x]$.
+
+Доведемо, що $\phi$ - гомоморфізм (Для $\deg f = \deg g$).\\
+Нехай $f = \sum_{i=0}^n f_i x^i \in R[x]$, нехай $g = \sum_{i=0}^n g_i x^i \in R[x]$.
+\[f+g = \sum_{i=0}^n (f_i + g_i) x^i\]
+\[f\cdot g = \sum_{k=0}^{2n} \left(\{f_i\} \ast \{g_i\}\right)_k x^k\]
+\[\phi(f + g) = \sum_{k=0}^n \pi(f_k + g_k) x^k = \sum_{k=0}^n \left(\pi(f_k) + \pi(g_k)\right) x^k = \sum_{k=0}^n \pi(f_k) x^k + \sum_{k=0}^n \pi(g_k) x^k = \phi(f) + \phi(g)\]
+$\ast$ - це згортка, тобто суперпозиція додавань та добутків
+\[\phi(f \cdot g) = \sum_{k=0}^{2n} \pi\left(\{f_i \ast g_i\}_k\right) x^k = \sum_{k=0}^{2n} \left(\{\pi(f_i) \ast \pi(g_i)\}_k\right) x^k = \left(\sum_{i=0}^n \pi(f_i)x^i\right)\cdot\left(\sum_{i=0}^n \pi(g_i)x^i\right) = \phi(f)\cdot\phi(g)\]
+
+Отже, $\phi$ - сюр'єктивний гомоморфізм із $\ker \phi = I[x]$.
+\begin{mdframed}[backgroundcolor=green!20]
+    \[(R/I)[x] \;\cong\; R[x] / \ker \phi \;=\; R[x]/I[x]\]
+\end{mdframed}
+
+\newpage
+\section*{№ 7.6}
+\begin{mdframed}
+    $R$ - комутативне кільце. $I$ - ідеал в $R$, $a\in R$.\\
+    Нехай $J = (a) + I$. Довести, що $J/I = (a+I) \subset R/I$
+\end{mdframed}
+Спершу
+\[J = (a) + I = \{v+y : v \in (a), y \in I\} = \{ax+y : a \in R, y \in I\}\]
+Відомо, що $J$ - це ідеал, при чому найменший ідеал, що містить $(a)$ та $I$.
+
+\[(a+I) = \{(x+I)\cdot (a+I) : x+I \in R/I\} = \{(ax)+I : x \in R\} = \{v+I : v \in (a)\}\]
+\[J/I = \{u + I : u \in J\} = \{u + I : u = v+y, v \in (a), y \in I\} \]
+
+Візьмемо вираз в фігурних дужках та зафіксуємо $y=0$. 
+Матимемо $u = v \in (a)$ та 
+\[(a+I) = \{v + I | v \in (a)\} \subset J/I\]
+
+З іншого боку знаємо що $u\in I \implies (x+u) + I = x + I$.
+Нехай $u+I \in J/I$.
+Тоді $u \in J$. Тобто $\exists v \in (a), y \in I: u=v+y$. 
+А тоді $u+I = (v + y) + I = v + I \in (a+I)$
+
+Отже, $(a+I) \subset J/I \subset (a+I)$, з чого $(a+I) = J/I$.
+
+А якщо коротко, то 
+\[u\in I \implies (x+u) + I = x + I\]
+\[(a+I) = \{v+I : v \in (a)\} = \{u+I : u = v + y, v \in (a), y \in I\} = J/I \subset R/I\]
+
+\section*{№ 7.7}
+\begin{mdframed}
+    Нехай $f : R \to S$ - гомоморфізм кілець.
+    Нехай $T$ - підкільце $S$.\\
+    Довести, що $f^{-1}(T)$ - підкільце в $R$.
+\end{mdframed}
+
+\begin{mdframed}[backgroundcolor=purple!20]
+    Критерій підкільця.\\
+    $Q$ - підкільце $R$ тоді і лише тоді коли $Q$ замкнене відносно операцій та містить $-1$.
+\end{mdframed}
+
+\begin{proof}[Доведення]
+Нехай $Q := f^{-1}(T) \subset R$.
+Нехай $a,b \in Q$.
+Критерій елементів $Q$:
+\[x \in Q \iff f(x)\in T \subset R\]
+
+З замкненості $T$ відносно операцій:\\
+$f(a+b) = f(a)+f(b) \in T$\\
+$f(ab) = f(a)f(b) \in T$\\
+Тобто $\forall a,b \in Q: a+b, ab \in Q$
+
+З того, що $-1_S \in T$ та що $f(1_R) = 1_S$:\\
+$f(-1_R) = -f(1_R) = -1_S \in T$\\
+Тобто $-1_R \in Q$
+
+Критерій підкільця для $Q = T^{-1}(T)$ виконано.
+\end{proof}
 
 \end{document}
 
