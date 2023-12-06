@@ -6,7 +6,7 @@
 ![Alt text](ex7.1_2.png)
 
 ### Ex 7.3
-![Alt text](image.png)
+![Alt text](ex7.3.png)
 
 ## Pr7
 
