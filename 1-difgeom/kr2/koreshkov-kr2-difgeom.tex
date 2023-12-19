@@ -65,6 +65,7 @@
 \usepackage[framemethod=TikZ]{mdframed}
 \mdfsetup{%
 	backgroundcolor = black!5,
+    skipabove = 4pt,
 }
 \mdfdefinestyle{ans}{%
     backgroundcolor = green!5,
@@ -282,6 +283,7 @@ $\cosh(t) \ne 0$, $\sinh(t) = 0 \implies t = 0$.
 
 
 % ===========================================
+\newpage
 
 \section*{Ex 1.4}
 \begin{mdframed}
@@ -313,21 +315,78 @@ $\cosh(t) \ne 0$, $\sinh(t) = 0 \implies t = 0$.
 Зверну увагу, що $f'$ буде градієнтом і $\forall p \in A: (f', A) = 0$, 
 бо градієнт перпендикулярний лініям рівню.
 
-Розгляну достатньо малий відкритий окіл $U_p$ довільної точки $p \in A, f(p)=c$, 
-такий що 
-\[\forall q \in A \cap U_p: (f'(p), f'(q))\ne 0\]
-(todo: довести що такий окіл існує. це очевидно, але все ж).
-Також виберемо дотичний вектор $v$, що задовільняє умовам $|v|=1, (v,f')=0$. 
-Він буде єдиний з точністю до напрямку (тобто заміни $v \vo -v$).
+Візьмемо довільну точку $p \in A = f^{-1}(c)$
 
-Введемо локальну карту $\phi_p : A \cap U_p \to \R$, де
-\[\phi_p(q) = ()\]
+\[df_p : T\R^2 \to T\R, \quad df_p = Jf^T\]
+$df_p$ - сюр'єктивне, бо має максимальний ранг (ранг 1, бо рядок не обертається в 0).
 
-Справедливо $A\cap U_p = g_p((-\delta,+\delta$ 
+Виберемо дотичний вектор $v_p$, що задовільняє умовам $|v_p|=1, (v_p,f'(p))=0$. 
+Він буде єдиний з точністю до напрямку (тобто заміни $v \to -v$).
+
+Ядро $\ker df_p$ буде одновимірним лінійним простором 
+$\ker df_p = \left<v_p\right>=\{tv_p : t\in\R\}$. 
+Геометрично це буде лінія, дотична до лінії рівня, перпендикулярна до градієнту.
+
+Візьмемо достатньо малий окіл $p \in U_p \subset \R^2$ такий, що
+$\forall q \in U_p: (f'(p), f'(q)) \ne 0$. 
+Існування такого околу очевидне, але як саме це довести я поки не знаю.
+
+Нехай $L_p: \R^2 \to \R, \quad L_p = v_p^T$. 
+Зверну увагу, що $L_p(\ker df_p) = \R$, тобто $L_p$ - сюр'єкція і має повний ранг.
+
+Нехай $\phi: U_p \to \R \times \R, \quad \phi(q) = (f(q); L_p q) = (f(q); v_p^Tq)$.\\
+$d\phi_p(w) = (df_p(w); L_p w)$\\
+
+\begin{align*}
+    w \in \ker df_p &\implies& d\phi_p(w) = (0; v_p^T w) \ne 0 \;\text{за вибором} v_p\\
+    w \notin \ker df_p &\implies& d\phi_p(w) = (df_p(w); L_p w) \ne 0, \;\text{бо} df_p(w) \ne 0
+\end{align*}
+
+З цього та лінійності $df_P$ та $L_p$, $d\phi_p$ буде лінійним ізоморфізмом.
+Тоді $\phi$ це дифеоморфізм (дифеоморфне вкладення?),
+при чому $\phi(A \cap U_p) = \{c\} \times \R$.
+
+Тобто, для кожної точки $p\in A$ існує окіл $U$ та локальна карта $(U, \phi)$, 
+при чому $\phi(A\cap U)$ має одну координату константу, що і доводить, що $A$ - одновимірний підмноговид.
+
+\begin{mdframed}
+    Зауваження: ідея доведення взята з 
+    \href{https://math.stackexchange.com/questions/1824631/understanding-milnors-proof-of-the-fact-that-the-preimage-of-a-regular-value-is}{math.stackexchange.com}
+\end{mdframed}
+
+\newpage
+\subsection*{Ex 2.4.2}
+
+Знаємо, що $A = f^{-1}(c)$ - одновимірний підмноговид $\R^2$ aka гладенька крива.
+Розглянемо нормальну параметризацію цієї кривої $\gamma$ таку що
+\begin{align*}
+    & \gamma : (a;b) \to A\\
+    & \gamma(t) := (x(t), y(t))\\
+    & f\gamma(t) \equiv c\\
+    & |(f\gamma)'_t| = 1\\
+    & (\ddot\gamma, \dot\gamma) = 0\\
+    & k(t) := |\ddot\gamma(t)|
+\end{align*}
 
 Тоді 
+\begin{align*}
+    &\frac{d}{dt}(f\gamma) = \begin{pmatrix}f'_x & f'_y\end{pmatrix}_{\gamma(t)} \begin{pmatrix}\dot x(t) \\ \dot y(t)\end{pmatrix} = f'(\gamma(t))^T \dot \gamma(t) = f'^T\dot \gamma(t) = 0\\
+    &\frac{d}{dt} \begin{pmatrix}f'_x \\ f'_y \end{pmatrix}_{\gamma(t)} = \frac{d}{dt} \begin{pmatrix}
+        f'_x(x(t), y(t)) \\ f'_y(x(t), y(t))
+    \end{pmatrix} = Jf'(\gamma(t)) \dot \gamma(t) = \begin{pmatrix}
+        f''_{xx} & f''_{xy} \\ f''_{yx} & f''_{yy}
+    \end{pmatrix}_{\gamma(t)}\begin{pmatrix}
+        \dot x(t) \\ \dot y(t)
+    \end{pmatrix}\\
+    &\frac{d^2}{dt}(f\gamma) = \frac{d(f'^T)}{dt} \dot \gamma(t) + f'(\gamma(t))^T \ddot \gamma(t) = \dot \gamma(t)^T (Jf')^T \dot \gamma(t) + f'^T \ddot \gamma(t) = 0\\
+    &
+\end{align*}
+
+\todo{WTF}
 
 
+
+\section*{Ex 2.5}
 
 \end{document}
 
