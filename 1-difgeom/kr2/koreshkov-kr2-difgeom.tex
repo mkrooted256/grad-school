@@ -131,7 +131,58 @@
     \end{vmatrix}}{(\dot x^2 + \dot y^2)^{3/2}}\]
 \end{mdframed}
 
-AAAAAAAA
+Нехай $\gamma(t) : (a;b) \to \R^n$ - гладенька пласка крива.
+Нехай $\phi(s) = \gamma(t(s))$ - натуральна параметризація $\gamma$. 
+Тобто
+\[|\frac{d\phi}{ds}| = 1, \quad (\frac{d^2\phi}{ds^2}, \frac{d\phi}{ds}) = 0, \quad k(s) := \left|\frac{d^2\phi}{ds^2}\right|\]
+
+Нехай також $s'(t) > 0$.
+
+Тоді 
+\[\frac{d\phi}{ds} = \frac{d\gamma}{dt} \cdot \frac{dt}{ds} = \frac{\dot \gamma(t)}{s'(t)}\]
+\begin{equation*}\label{eqn:2.2.1}
+    |\dot \gamma(t)| = |s'(t)| = s'(t)
+\end{equation*}
+
+\begin{align*}
+    \frac{d^2\phi}{ds^2} &= \frac{d}{ds}\frac{d\phi}{ds} = \frac{d}{dt}\left(\frac{d\phi}{ds}\right) \cdot \frac{1}{s'(t)} = \\
+    &= \frac{d}{dt}\left(\frac{\dot \gamma(t)}{s'(t)}\right) \cdot \frac{1}{s'(t)} = 
+    \frac{\ddot \gamma(t) s'(t) - \dot\gamma(t) s''(t)}{(s'(t))^3} = \\
+    &= \frac{\ddot \gamma(t) |\dot \gamma(t)| - \dot\gamma(t) s''(t)}{|\dot \gamma(t)|^3}
+\end{align*}
+\begin{align*}
+    \left(\frac{d^2\phi}{ds^2}, \frac{d\phi}{ds}\right) &= 
+    \left(\frac{d^2\phi}{ds^2}, \frac{\dot \gamma(t)}{|\dot \gamma(t)|}\right) 
+    = \left(\frac{\ddot \gamma(t) |\dot \gamma(t)| - \dot\gamma(t) s''(t)}{|\dot \gamma(t)|^3}, \frac{\dot \gamma(t)}{|\dot \gamma(t)|}\right) = \\
+    &= \frac{(\ddot\gamma(t), \dot\gamma(t)) - |\dot\gamma(t)|\cdot s''(t)}{|\dot\gamma(t)|^3} = 0
+\end{align*}
+\begin{equation*}\label{eqn:2.2.2}
+    (\ddot\gamma(t), \dot\gamma(t)) - |\dot\gamma(t)|\cdot s''(t) = 0; \quad |\dot\gamma(t)|s''(t) = (\ddot\gamma(t), \dot\gamma(t))
+\end{equation*}
+
+Далі
+\begin{align*}
+    k := \left|\frac{d^2\phi}{ds^2}\right|^2 &= 
+    \left(\frac{\ddot \gamma(t) |\dot \gamma(t)| - \dot\gamma(t) s''(t)}{|\dot \gamma(t)|^3}, \frac{\ddot \gamma(t) |\dot \gamma(t)| - \dot\gamma(t) s''(t)}{|\dot \gamma(t)|^3}\right) =\\
+    &= \frac{1}{|\dot \gamma(t)|^6} \left(  |\ddot\gamma(t)|^2|\dot\gamma(t)|^2 + |\dot\gamma(t)|^2|s''(t)|^2 - 2 (\ddot\gamma(t), \dot\gamma(t)) \cdot |\dot\gamma(t)|\cdot s''(t)  \right) = \\
+    &= \frac{1}{|\dot \gamma(t)|^6} \left(  |\ddot\gamma(t)|^2|\dot\gamma(t)|^2 + (\ddot\gamma(t), \dot\gamma(t))^2 - 2 (\ddot\gamma(t), \dot\gamma(t))^2  \right) = \\
+    &= \frac{1}{|\dot \gamma(t)|^6} \left(  |\ddot\gamma(t)|^2|\dot\gamma(t)|^2 - (\ddot\gamma(t), \dot\gamma(t))^2 \right)
+\end{align*}
+Тобто 
+\[k(t) = \frac{\sqrt{|\dot\gamma|^2|\ddot\gamma|^2 - (\dot\gamma,\ddot\gamma)^2}}{|\dot\gamma|^3}\]
+
+Нехай $\gamma : (a;b) \to \R^3$. \\
+Використаємо те, що
+$|A \times B|^2 + (A,B)^2 = |A|^2|B|^2(\sin^2(\angle(A,B)) + \cos^2(\angle(A,B))) = |A|^2|B|^2$\\
+Тоді маємо
+\[k(t) = \frac{|\ddot\gamma(t) \times \dot\gamma(t)|}{|\dot\gamma(t)|^3}\]
+
+Для планарної кривої $\gamma : (a;b) \to \R^2$ можна вважати, що $\gamma(t) = (x(t), y(t), 0) : (a;b) \to \R^3$, а тоді
+\[k(t) = \frac{1}{|\dot\gamma(t)|^3} \begin{vmatrix}
+    \hat i & \hat j & \hat k \\
+    \dot x & \dot y & 0 \\
+    \ddot x & \ddot y & 0
+\end{vmatrix} = \frac{\begin{vmatrix}\dot x & \dot y \\ \ddot x & \ddot y \end{vmatrix}}{\sqrt{\dot x^2 + \dot y^2}^3}\]
 
 \section*{Ex 2.3}
 \begin{mdframed}
@@ -158,8 +209,7 @@ $t\in \R$, отож лише $t=0$.\\
 Але в цій точці похідна не визначена.
 
 \begin{mdframed}[backgroundcolor=green!20]
-    $k(t) = \frac{6t^2}{(2t^2+9t^4)^{3/2}}$
-
+    \[k(t) = \frac{6t^2}{(2t^2+9t^4)^{3/2}}\]
     Екстремумів немає
 
     Критична точка в $t=0, \gamma(0) = (0,0)$.
@@ -185,8 +235,7 @@ $k(s) = \frac{1}{1} = 1$
 Критична точка лише $k(0)$, в інших точках це константа. 
 
 \begin{mdframed}[backgroundcolor=green!20]
-    $k(t) = 1, \; t\ne 0$
-
+    \[k(t) = 1, \; t\ne 0\]
     Екстремумів немає
 
     Критична точка в $t=0$
@@ -207,33 +256,30 @@ $k(t) = \frac{0}{\sqrt{13}} = 0$,
 $k'(t) = 0$\\
 
 \begin{mdframed}[backgroundcolor=green!20]
-    $k(t) = 0$\\
+    \[k(t) = 0\]
     Екстремумів немає
 \end{mdframed}
 
+\newpage
 \subsection*{Ex 2.3.4}
 \[\gamma(t) = (at, a/t), \quad \gamma : (0;+\infty) \to \R^2, \quad a>0\]
 
-Репараметризую $s=at$.
-\[\gamma(s) = (s, a^2/s)\]
+$\gamma'(t) = (a, -a/t^2)$\\
+$\gamma''(t) = (0, 2a/t^3)$\\
+$|[\gamma'(t), \gamma''(t)]| = 2a^2/t^3$\\
+$|\gamma'(t)| = \sqrt{a^2+a^2/t^4}$
 
-$\gamma'(s) = (1, -a^2/s^2)$\\
-$\gamma''(s) = (0, 2a^2/s^3)$\\
-$|[\gamma'(s), \gamma''(s)]| = 2a^2/s^3$\\
-$|\gamma'(s)| = \sqrt{1+a^4/s^4}$
+$k(t) = \frac{2a^2/t^3}{\sqrt{a^2+a^2/t^4}^3} = \frac{2a^2}{t^3(a^2+a^2/t^4)^{3/2}} = \frac{2a^2}{(a^2t^2+a^2/t^2)^{3/2}}$
 
-$k(s) = \frac{2a^2/s^3}{\sqrt{1+a^4/s^4}^3} = \frac{2a^2}{s^3(1+a^4/s^4)^{3/2}} = \frac{2a^2}{(s^2+a^4/s^2)^{3/2}}$
-
-$k'(s) = \frac{12a^6-6a^2s^4(1+a^4/s^4)}{...} = \frac{6a^2(a^4-s^4)}{...} = 0$\\
-Маємо лише $s=a$, бо $s \in \R, s>0$.
-Цій точці відповідає $t=s/a=1$ та $\gamma(t=1) = \gamma(s=a) = (a,a)$.
-
-Репараметризація лише заплутала, але най буде.
+$k'(s) = -\frac{3 a^2 (-((2 a^2)/t^3)+2 t)}{(a^2/t^2+t^2)^{5/2}} = 0 $\\
+$t^4 = 1$\\
+$t = \pm 1$. Але $t>0$, отже маємо лише $t=1$.
+Цій точці відповідає $\gamma(t=1) = (a,a)$.
 
 \begin{mdframed}[backgroundcolor=green!20]
-    $k(t) = \frac{2a^2}{(at)^3(1+1/t^4)^{3/2}}$
+    \[k(t) = \frac{2a^2}{(a^2t^2+a^2/t^2)^{3/2}} = \frac{2}{at^3(1+1/t^4)^{3/2}}\]
 
-    Екстремум в точці $t=1$, $\gamma(t)=(a,a)$
+    Екстремум в точці $t=1$, $\gamma(1)=(a,a)$, $k(1) = \frac{1}{\sqrt{a}}$
 \end{mdframed}
 
 
@@ -257,11 +303,11 @@ $t = \operatorname{arsinh}(1) = \ln(1+\sqrt{2})$\\
 $t = \operatorname{arsinh}(-1) = -\ln(1+\sqrt{2})$\\
 
 \begin{mdframed}[backgroundcolor=green!20]
-    $k(t) = \frac{\sinh(t)}{(1 + \cosh^2(t))^{3/2}}$\\
-    Екстремуми в $t = \pm\ln(1+\sqrt{2}) = \pm\operatorname{arsinh}(1)$
+    \[k(t) = \frac{\sinh(t)}{(1 + \cosh^2(t))^{3/2}}\]
+    Екстремуми в $t = \pm\ln(1+\sqrt{2}) = \pm\operatorname{arsinh}(1)$.
 \end{mdframed}
 
-
+\newpage
 \subsection*{Ex 2.3.6}
 \[\gamma(t) = (t, \cosh(t))\]
 
@@ -277,15 +323,14 @@ $k'(t) = -2(\cosh(t))^{-3}\cdot \sinh(t) = 0$
 $\cosh(t) \ne 0$, $\sinh(t) = 0 \implies t = 0$.
 
 \begin{mdframed}[backgroundcolor=green!20]
-    $k(t) = \frac{1}{\cosh^2(t)}$\\
-    Екстремум в $t = 0, \gamma(0) = (0,1)$
+    \[k(t) = \frac{1}{\cosh^2(t)}\]
+    Екстремум в $t = 0, \gamma(0) = (0,1)$, $k(0)=1$.
 \end{mdframed}
 
 
 % ===========================================
-\newpage
 
-\section*{Ex 1.4}
+\section*{Ex 2.4}
 \begin{mdframed}
     $f : \R^2 \to \R, \quad f\in C^2$\\
     Нехай $c\in \R, A = f^{-1}(c)$ та $A$ не містить критичних точок.
@@ -305,7 +350,7 @@ $\cosh(t) \ne 0$, $\sinh(t) = 0 \implies t = 0$.
     \end{enumerate}
 \end{mdframed}
 
-\subsection*{Ex 1.4.1}
+\subsection*{Ex 2.4.1}
 Прообраз регулярного значення функції буде підмноговидом.
 Покажемо це в цьому випадку.
 
@@ -317,7 +362,7 @@ $\cosh(t) \ne 0$, $\sinh(t) = 0 \implies t = 0$.
 
 Візьмемо довільну точку $p \in A = f^{-1}(c)$
 
-\[df_p : T\R^2 \to T\R, \quad df_p = Jf^T\]
+$df_p : T\R^2 \to T\R, \quad df_p = Jf^T$
 $df_p$ - сюр'єктивне, бо має максимальний ранг (ранг 1, бо рядок не обертається в 0).
 
 Виберемо дотичний вектор $v_p$, що задовільняє умовам $|v_p|=1, (v_p,f'(p))=0$. 
@@ -335,58 +380,287 @@ $\forall q \in U_p: (f'(p), f'(q)) \ne 0$.
 Зверну увагу, що $L_p(\ker df_p) = \R$, тобто $L_p$ - сюр'єкція і має повний ранг.
 
 Нехай $\phi: U_p \to \R \times \R, \quad \phi(q) = (f(q); L_p q) = (f(q); v_p^Tq)$.\\
-$d\phi_p(w) = (df_p(w); L_p w)$\\
+$d\phi_p(w) = (df_p(w); L_p w)$
 
-\begin{align*}
-    w \in \ker df_p &\implies& d\phi_p(w) = (0; v_p^T w) \ne 0 \;\text{за вибором} v_p\\
-    w \notin \ker df_p &\implies& d\phi_p(w) = (df_p(w); L_p w) \ne 0, \;\text{бо} df_p(w) \ne 0
-\end{align*}
+$w \in \ker df_p \implies d\phi_p(w) = (0; v_p^T w) \ne 0\;$ за вибором $\;v_p$\\
+$w \notin \ker df_p \implies d\phi_p(w) = (df_p(w); L_p w) \ne 0, \;$ бо $\;df_p(w) \ne 0$
 
 З цього та лінійності $df_P$ та $L_p$, $d\phi_p$ буде лінійним ізоморфізмом.
-Тоді $\phi$ це дифеоморфізм (дифеоморфне вкладення?),
+Тоді, за теоремою про локальний дифеоморфізм, $\phi$ це локальний дифеоморфізм,
 при чому $\phi(A \cap U_p) = \{c\} \times \R$.
 
 Тобто, для кожної точки $p\in A$ існує окіл $U$ та локальна карта $(U, \phi)$, 
-при чому $\phi(A\cap U)$ має одну координату константу, що і доводить, що $A$ - одновимірний підмноговид.
+при чому одна координата $\phi(A\cap U)$ є константою, що і доводить, що $A$ - одновимірний підмноговид.
 
-\begin{mdframed}
-    Зауваження: ідея доведення взята з 
-    \href{https://math.stackexchange.com/questions/1824631/understanding-milnors-proof-of-the-fact-that-the-preimage-of-a-regular-value-is}{math.stackexchange.com}
-\end{mdframed}
+% ідея доведення взята з
+% \href{https://math.stackexchange.com/questions/1824631/understanding-milnors-proof-of-the-fact-that-the-preimage-of-a-regular-value-is}{math.stackexchange.com}
 
-\newpage
+% \newpage
 \subsection*{Ex 2.4.2}
 
 Знаємо, що $A = f^{-1}(c)$ - одновимірний підмноговид $\R^2$ aka гладенька крива.
 Розглянемо нормальну параметризацію цієї кривої $\gamma$ таку що
-\begin{align*}
-    & \gamma : (a;b) \to A\\
+\[\begin{array}{ll}
+    \gamma : (a;b) \to A
     & \gamma(t) := (x(t), y(t))\\
-    & f\gamma(t) \equiv c\\
-    & |(f\gamma)'_t| = 1\\
-    & (\ddot\gamma, \dot\gamma) = 0\\
+    f(\gamma(t)) \equiv c
+    & |\dot\gamma| = 1\\
+    (\ddot\gamma, \dot\gamma) = 0
     & k(t) := |\ddot\gamma(t)|
-\end{align*}
+\end{array}\]
 
-Тоді 
-\begin{align*}
-    &\frac{d}{dt}(f\gamma) = \begin{pmatrix}f'_x & f'_y\end{pmatrix}_{\gamma(t)} \begin{pmatrix}\dot x(t) \\ \dot y(t)\end{pmatrix} = f'(\gamma(t))^T \dot \gamma(t) = f'^T\dot \gamma(t) = 0\\
-    &\frac{d}{dt} \begin{pmatrix}f'_x \\ f'_y \end{pmatrix}_{\gamma(t)} = \frac{d}{dt} \begin{pmatrix}
+\[\nabla f := \begin{pmatrix}
+    f'_x & f'_y
+\end{pmatrix}^T\]
+Визначимо наступне 
+\[N := \frac{\nabla f}{|\nabla f|}; \quad T := \frac{\begin{pmatrix}-f'_y & f'_x\end{pmatrix}^T}{|\nabla f|}\]
+Тоді
+$|T|=1$ та $(N,T)=0$
+
+Також $\frac{d}{dt}f(\gamma(t)) = \nabla f(\gamma(t)) \cdot \dot \gamma(t) = |\nabla f|N(t) \cdot \dot\gamma(t) = 0$,  тобто $(N(t), \dot\gamma(t)) = 0$.
+
+А отже $T(t) \parallel \dot\gamma(t)$. Також знаємо, що $|T(t)|=|\dot\gamma(t)|=1$.\\
+Отже $T=\dot\gamma$ з точністю до напрямку. \\
+Тоді $\frac{d}{dt}T(t)=\frac{d}{dt}\dot\gamma(t)=\ddot\gamma(t)$\\
+Та $N(t) \parallel \ddot \gamma(t)$.\\
+Звісно також $(T, \frac{d}{dt}T) = 0$
+
+\[\ddot\gamma(t) = |\ddot\gamma(t)| N(t) = k(t)N(t)\]
+
+\[\frac{d}{dt}f(\gamma(t)) = \begin{pmatrix}f'_x & f'_y\end{pmatrix}_{\gamma(t)} \begin{pmatrix}\dot x(t) \\ \dot y(t)\end{pmatrix} = \nabla f(\gamma(t))^T \dot \gamma(t) = \nabla f^T\dot \gamma(t) = 0\]
+\[\frac{d}{dt}\nabla f(\gamma(t)) = \frac{d}{dt} \begin{pmatrix}
         f'_x(x(t), y(t)) \\ f'_y(x(t), y(t))
-    \end{pmatrix} = Jf'(\gamma(t)) \dot \gamma(t) = \begin{pmatrix}
+    \end{pmatrix} = Hf(\gamma(t)) \dot \gamma(t) = \begin{pmatrix}
         f''_{xx} & f''_{xy} \\ f''_{yx} & f''_{yy}
     \end{pmatrix}_{\gamma(t)}\begin{pmatrix}
         \dot x(t) \\ \dot y(t)
-    \end{pmatrix}\\
-    &\frac{d^2}{dt}(f\gamma) = \frac{d(f'^T)}{dt} \dot \gamma(t) + f'(\gamma(t))^T \ddot \gamma(t) = \dot \gamma(t)^T (Jf')^T \dot \gamma(t) + f'^T \ddot \gamma(t) = 0\\
-    &
-\end{align*}
+    \end{pmatrix}
+\]
+\[\frac{d^2}{dt^2}(f(\gamma(t))) = \frac{d(\nabla f^T)}{dt} \dot \gamma(t) + \nabla f(\gamma(t))^T \ddot \gamma(t) = \dot \gamma(t)^T (Hf)^T \dot \gamma(t) + \nabla f^T \ddot \gamma(t) = 0\]
 
-\todo{WTF}
+Замінимо $\dot\gamma \to T, \;\; \nabla f \to |\nabla f|N, \;\; \ddot \gamma \to k \cdot N$
+
+\[T(t)^T (Hf)^T T(t) + |\nabla f|N(t)^T N(t) k(t) = 0\]
+\[k(t) = \frac{T(t)^T (Hf) T(t)}{|\nabla f||N(t)|^2} = \frac{T(t)^T (Hf) T(t)}{|\nabla f|} = \frac{\frac{1}{|\nabla f|}\begin{pmatrix}-f'_y & f'_x\end{pmatrix} (Hf) \frac{1}{|\nabla f|}\begin{pmatrix}-f'_y \\ f'_x\end{pmatrix}}{|\nabla f|} \]
+
+\[k(t) = \frac{\begin{pmatrix}-f'_y & f'_x\end{pmatrix} (Hf) \begin{pmatrix}-f'_y \\ f'_x\end{pmatrix}}{|\nabla f|^3} \]
 
 
 
+% \[\frac{d}{dt}|\nabla f(\gamma(t))|^2 = 2\left(\frac{d}{dt}\nabla f(\gamma(t)), \nabla f(\gamma(t))\right) = 2\left((Hf(\gamma(t))) \dot \gamma(t), \nabla f(\gamma(t))\right)\]
+% \[\frac{d}{dt}|\nabla f(\gamma(t))| = \frac{1}{2|\nabla f(\gamma(t))|} \cdot \frac{d}{dt}|\nabla f(\gamma(t))|^2 = \left((Hf(\gamma(t))) \dot \gamma(t), \frac{\nabla f}{|\nabla f|}\right)\]
+% \[\frac{d}{dt}|\nabla f(\gamma(t))| = \left((Hf) T(t), N(t)\right)\]
+
+% \[\frac{d}{dt}\begin{pmatrix}
+%     -f'_y \\ f'_x 
+% \end{pmatrix} = \begin{pmatrix}
+%     -f''_{yx}\dot x - f''_{yy}\dot y \\ 
+%     f''_{xx}\dot x + f''_{xy}\dot y 
+% \end{pmatrix}\]
+
+% \[k(t) = \frac{\sqrt{|\dot\gamma|^2|\ddot\gamma|^2 - (\dot\gamma,\ddot\gamma)^2}}{|\dot\gamma|^3}\]
+% \[k(t) = \frac{\sqrt{|T|^2|\frac{d}{dt}T|^2 - (T,\frac{d}{dt}T)^2}}{|T|^3}\]
+
+% Використаємо те, що $T=\dot\gamma$.
+% \[T^T(Hf)T+\nabla f^T\ddot\gamma(t) = 0\]
+
+\newpage
 \section*{Ex 2.5}
+\subsection*{2.5.1}
+\begin{mdframed}
+    $f(x,y) = x^2+y^2, \quad c = r^2$
+\end{mdframed}
+Маємо коло радіусу $r$. Знаємо що кривина буде константною і рівною $1/r$. Доведемо це.
+
+\[\nabla f = \begin{pmatrix} 2x & 2y\end{pmatrix}; \quad |\nabla f| = 2\sqrt{x^2+y^2} = 2r\]
+\[Hf = \begin{pmatrix}
+    2 & 0\\ 0 & 2
+\end{pmatrix}\]
+\[k = \frac{1}{8r^3}\begin{pmatrix} -2y & 2x\end{pmatrix}\begin{pmatrix}
+    2 & 0\\ 0 & 2
+\end{pmatrix}\begin{pmatrix} -2y \\ 2x\end{pmatrix} = \]
+\[= \frac{8y^2 + 8x^2}{8r^3} = \frac{r^2}{r^3} = \frac{1}{r}\]
+
+\[k(p) = \frac{1}{r}\]
+Без екстремумів, бо константа
+
+\subsection*{2.5.2}
+\begin{mdframed}
+    $f(x,y) = xy, \quad c \ne 0$
+\end{mdframed}
+
+\[xy=c; \quad y=\frac{c}{x}\]
+
+\[\nabla f = \begin{pmatrix} y & x\end{pmatrix} = \begin{pmatrix} \frac{c}{x} & x\end{pmatrix}\]
+\[|\nabla f| = \sqrt{\frac{c^2}{x^2} + x^2}\]
+\[Hf = \begin{pmatrix}
+    0 & 1 \\ 1 & 0
+\end{pmatrix}\]
+\[k(x) = \frac{1}{\left(\frac{c^2}{x^2} + x^2\right)^{3/2}} \begin{pmatrix} -x & y\end{pmatrix} \begin{pmatrix}
+    0 & 1 \\ 1 & 0
+\end{pmatrix} \begin{pmatrix} -x \\ y\end{pmatrix} = \frac{2xy}{\left(\frac{c^2}{x^2} + x^2\right)^{3/2}} = \frac{2c}{\left(\frac{c^2}{x^2} + x^2\right)^{3/2}}\]
+
+$k$ парна функція та має критичну точку в $x=0$. Розглядаємо $x>0$. 
+
+\[k'(x) = \frac{x^4-c^2}{...} = 0, \quad x=\pm \sqrt{c}\]
+\[k(\sqrt{c}) = \frac{1}{\sqrt{c}}\]
+
+Отже
+\[k(x, c/x) = \frac{2c}{\left(\frac{c^2}{x^2} + x^2\right)^{3/2}}\]
+Екстремуми
+\[k(\pm\sqrt{c}) = \frac{1}{\sqrt{c}}, \quad \text{в точці} \; (\sqrt{c}, \sqrt{c})\] 
+
+
+\subsection*{2.5.3}
+\begin{mdframed}
+    $f(x,y) = x^3 - y^2, \quad c \ne 0$
+\end{mdframed}
+
+\[ x^3 - y^2=c; \quad y^2 = x^3-c; \quad x^3 = y^2+c; \quad y=\pm\sqrt{x^3-c}\]
+
+\[\nabla f = \begin{pmatrix} 3x^2 & -2y\end{pmatrix}\]
+\[|\nabla f| = \sqrt{9x^4+4y^2}\]
+\[Hf = \begin{pmatrix}
+    6x & 0 \\ 0 & -2
+\end{pmatrix}\]
+\[k(x,y) = \frac{1}{(9x^4+4y^2)^{3/2}} \begin{pmatrix} 2y & 3x^2\end{pmatrix} \begin{pmatrix}
+    6x & 0 \\ 0 & -2
+\end{pmatrix} \begin{pmatrix} 2y & 3x^2\end{pmatrix} = \frac{54xy^2 - 8x^4}{(9x^4+4y^2)^{3/2}}\]
+\[k(x) = \frac{54x(x^3-c) - 8x^4}{(9x^4+4(x^3-c))^{3/2}} 
+= \frac{54x^4-xc - 8x^4}{(9x^4+4x^3-4c)^{3/2}} = \frac{46x^4-xc}{(9x^4+4x^3-4c)^{3/2}}\]
+
+\section*{Ex 2.6}
+
+Формули Френе:
+\[{\displaystyle {\frac {\mathrm {d} }{\mathrm {d} t}}{\begin{bmatrix}\mathbf {T} \\\mathbf {N} \\\mathbf {B} \end{bmatrix}}=\|\gamma'(t)\|{\begin{bmatrix}0&\kappa &0\\-\kappa &0&\tau \\0&-\tau &0\end{bmatrix}}{\begin{bmatrix}\mathbf {T} \\\mathbf {N} \\\mathbf {B} \end{bmatrix}}}\]
+\[k = \frac{|\dot\gamma \times \ddot\gamma|}{|\dot\gamma|^3}, \quad \tau = \frac{\det(\dot\gamma, \ddot\gamma, \dddot\gamma)}{|\dot\gamma \times \ddot\gamma|^2}\]
+
+Також
+\[
+T = \frac{\dot\gamma}{|\dot\gamma|}; \quad
+B = \frac{\dot\gamma(t) \times \ddot\gamma(t)}{|\dot\gamma(t) \times \ddot\gamma(t)|}; \quad
+N = B \times T
+\]
+
+\subsection*{2.6.1}
+\begin{mdframed}
+    $\gamma(t) = \begin{pmatrix}
+        t & t^2 & t^3
+    \end{pmatrix}$
+\end{mdframed}
+
+$\dot\gamma = \begin{pmatrix}1 & 2t & 3t^2\end{pmatrix}$.\\
+$\ddot\gamma = \begin{pmatrix}0 & 2 & 6t\end{pmatrix}$.\\
+$\dddot\gamma = \begin{pmatrix}0 & 0 & 6\end{pmatrix}$\\
+$|\dot\gamma| = \sqrt{1+4t^2+9t^4}$
+
+\[A = \dot\gamma(t) \times \ddot\gamma(t) = \begin{vmatrix}
+    \hat i & \hat j & \hat k \\ 0 & 2 & 6t \\ 0 & 0 & 6
+\end{vmatrix} = \begin{pmatrix}
+    12 & 0 & 0
+\end{pmatrix}\]
+\[T(t) = \frac{\dot \gamma}{|\dot\gamma|} = \frac{\begin{pmatrix}1 & 2t & 3t^2\end{pmatrix}}{\sqrt{1+4t^2+9t^4}}\]
+\[B(t) = \frac{A}{|A|} = \begin{pmatrix}
+    1 & 0 & 0
+\end{pmatrix}\]
+\[N(t) = \begin{vmatrix}
+    \hat i & \hat j & \hat k \\ 1 & 0 & 0 \\ 1 & 2t & 3t^2
+\end{vmatrix} = \begin{pmatrix}
+    0 & -3t^2 & 2t
+\end{pmatrix}\]
+
+\[k = \frac{|A|}{|\dot\gamma|^3} = \frac{12}{(1+4t^2+9t^4)^{3/2}}\]
+\[\tau = \frac{\det(\dot\gamma, \ddot\gamma, \dddot\gamma)}{12^2} = \frac{1}{144}\begin{vmatrix}
+    1 & 2t & 3t^2 \\ 0 & 2 & 6t \\ 0 & 0 & 6
+\end{vmatrix} = \frac{12}{144} = \frac{1}{12}\]
+
+\subsection*{2.6.2}
+\begin{mdframed}
+    $\gamma(t) = \begin{pmatrix}
+        \cos(at) & \sin(at) & bt
+    \end{pmatrix}$
+\end{mdframed}
+
+$\dot\gamma = \begin{pmatrix}-a\sin(at) & a\cos(at) & b\end{pmatrix}$.\\
+$\ddot\gamma = \begin{pmatrix}-a^2\cos(at) & -a^2\sin(at) & 0\end{pmatrix}$.\\
+$\dddot\gamma = \begin{pmatrix}a^3\sin(at) & -a^3\cos(at) & 0\end{pmatrix}$\\
+$|\dot\gamma| = \sqrt{a^2+b^2}$
+
+\[A = \dot\gamma(t) \times \ddot\gamma(t) = \begin{vmatrix}
+    \hat i & \hat j & \hat k  \\ -a\sin(at) & a\cos(at) & b \\ -a^2\cos(at) & -a^2\sin(at) & 0
+\end{vmatrix} = \begin{pmatrix}
+    a^2b\sin(at) & -a^2b\cos(at) & a^3\cos^2(at)-a^3\sin^2(at)
+\end{pmatrix} = \]
+\[= \begin{pmatrix}
+    a^2b\sin(at) & -a^2b\cos(at) & a^3
+\end{pmatrix} \]
+\[|A| = \sqrt{a^4b^2+a^6} = a^2\sqrt{a^2+b^2}\]
+\[T(t) = \frac{\dot \gamma}{|\dot\gamma|} = \frac{\begin{pmatrix}-a\sin(at) & a\cos(at) & b\end{pmatrix}}{\sqrt{a^2+b^2}}\]
+\[B(t) = \frac{A}{|A|} = \frac{1}{\sqrt{a^4b^2+a^6}}\begin{pmatrix}
+    a^2b\sin(at) & -a^2b\cos(at) & a^3
+\end{pmatrix} = \frac{1}{\sqrt{a^2+b^2}}\begin{pmatrix}
+    b\sin(at) & -b\cos(at) & a
+\end{pmatrix}\]
+\[N(t) = \frac{1}{a^2+b^2}\begin{vmatrix}
+    \hat i & \hat j & \hat k \\ b\sin(at) & -b\cos(at) & a \\ -a\sin(at) & a\cos(at) & b
+\end{vmatrix} = \frac{1}{a^2+b^2}\begin{pmatrix}
+    -\cos(at)(a^2+b^2) & -\sin(at)(a^2+b^2) & 0
+\end{pmatrix} = \]
+\[= \begin{pmatrix}
+    -\cos(at) & -\sin(at) & 0
+\end{pmatrix}\]
+Це взагалі-то щастя, бо нормальний вектор дійсно має бути напрямленим до осі гвинтової лінії.
+
+\[k = \frac{|A|}{|\dot\gamma|^3} = \frac{a^2\sqrt{a^2+b^2}}{\sqrt{a^2+b^2}^3} = \frac{a^2}{a^2+b^2}\]
+\[\tau = \frac{\det(\dot\gamma, \ddot\gamma, \dddot\gamma)}{|A|^2} = \frac{1}{a^2+b^2}\begin{vmatrix}
+    -a\sin(at) & a\cos(at) & b \\ -a^2\cos(at) & -a^2\sin(at) & 0 \\ a^3\sin(at) & -a^3\cos(at) & 0
+\end{vmatrix} = \frac{b(a^5\cos^2(at)+a^5\sin^2(at))}{a^2+b^2} = \frac{a^5b}{a^2+b^2}\]
+
+\newpage
+\subsection*{2.6.3}
+\begin{mdframed}
+    $\gamma(t) = \begin{pmatrix}
+        t\cos(at) & t\sin(at) & bt
+    \end{pmatrix}$
+\end{mdframed}
+
+Далі я дещо рахував у Wolfram Cloud бо це капець
+
+$\dot\gamma = \begin{pmatrix}-at\sin(at)+\cos(at) & at\cos(at)+\sin(at) & b\end{pmatrix}$.\\
+$\ddot\gamma = (wolfram) = \begin{pmatrix}-a^2 t \cos(a t) - 2a \sin(a t) & 2a \cos(a t)-a^2 t \sin(a t) & 0 \end{pmatrix}$.\\
+$\dddot\gamma = (wolfram) = \begin{pmatrix}-3 a^2 \cos(a t)+a^3 t \sin(a t) & -a^3 t \cos(a t)-3 a^2 \sin(a t) & 0 \end{pmatrix}$\\
+$|\dot\gamma| = \sqrt{b^2 + a^2t^2\cos^2(at)+\sin^2(at)+2at\sin(at)\cos(at)+\cos^2(at)+a^2t^2\sin^2(at)-2at\sin(at)\cos(at)} =$\\ 
+$=\sqrt{b^2 + a^2t^2 + 1}$
+
+\[A = \dot\gamma(t) \times \ddot\gamma(t) = \begin{vmatrix}
+    \hat i & \hat j & \hat k  \\ -at\sin(at)+\cos(at) & at\cos(at)+\sin(at) & b \\ -a^2 t \cos(a t) - 2a \sin(a t) & 2a \cos(a t)-a^2 t \sin(a t) & 0
+\end{vmatrix} = \]
+\[= (wolfram) = \begin{pmatrix}
+    -2 a b \cos(a t)+a^2 b t \sin(a t) \\
+    -a^2 b t \cos(a t)-2 a b \sin(a t) \\
+    2 a \cos(a t)^2+a^3 t^2 \cos(a t)^2+2 a \sin(a t)^2+a^3 t^2 \sin(a t)^2
+\end{pmatrix} = \]
+\[= \begin{pmatrix}
+    -2 a b \cos(a t)+a^2 b t \sin(a t) & -a^2 b t \cos(a t)-2 a b \sin(a t) & 2 a + a^3t^3
+\end{pmatrix}\]
+\[|A| = (wolfram) =  a \sqrt{(2+a^2 t^2)^2+b^2 (4+a^2 t^2)} \]
+\[T(t) = \frac{\dot \gamma}{|\dot\gamma|} = \frac{\begin{pmatrix}-at\sin(at)+\cos(at) & at\cos(at)+\sin(at) & b\end{pmatrix}}{\sqrt{b^2 + a^2t^2 + 1}}\]
+\[B(t) = \frac{A}{|A|} = \frac{1}{a \sqrt{(2+a^2 t^2)^2+b^2 (4+a^2 t^2)}}\begin{pmatrix}
+    -2 a b \cos(a t)+a^2 b t \sin(a t) & -a^2 b t \cos(a t)-2 a b \sin(a t) & 2 a + a^3t^3
+\end{pmatrix} = \]
+\[=\frac{1}{\sqrt{(2+a^2 t^2)^2+b^2 (4+a^2 t^2)}}\begin{pmatrix}
+    -2 b \cos(a t)+a b t \sin(a t) & -a b t \cos(a t)-2 b \sin(a t) & 2 + a^2t^3
+\end{pmatrix}\]
+
+\[N(t) = B \times T = (wolfram) = \frac{\begin{pmatrix}
+    -a t (2+b^2+a^2 t^2) \cos(a t)-(2+2 b^2+a^2 t^2) \sin(a t)\\
+    (2+2 b^2+a^2 t^2) \cos(a t)-a t (2+b^2+a^2 t^2) \sin(a t)\\
+    -a b t
+\end{pmatrix}}{\sqrt{(1+b^2+a^2 t^2)((2+a^2 t^2)^2+b^2 (4+a^2 t^2))}}\]
+
+\[k = \frac{|A|}{|\dot\gamma|^3} = \frac{a \sqrt{(2+a^2 t^2)^2+b^2 (4+a^2 t^2)}}{\sqrt{b^2 + a^2t^2 + 1}^3}\]
+\[\tau = \frac{\det(\dot\gamma, \ddot\gamma, \dddot\gamma)}{|A|^2} = (wolfram) = \frac{a^3 b (6+a^2 t^2) }{b^2 + a^2t^2 + 1}\]
+
 
 \end{document}
 
