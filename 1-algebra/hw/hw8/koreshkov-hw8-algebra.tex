@@ -1,0 +1,204 @@
+\documentclass[11pt, a4paper]{article} % use larger type; default would be 10pt
+
+\usepackage{fontspec} % Font selection for XeLaTeX; see fontspec.pdf for documentation
+\defaultfontfeatures{Mapping=tex-text} % to support TeX conventions like ``---''
+\usepackage{xunicode} % Unicode support for LaTeX character names (accents, European chars, etc)
+\usepackage{xltxtra} % Extra customizations for XeLaTeX
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,patterns}
+
+
+% other LaTeX packages.....
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd,systeme}
+\usepackage{unicode-math}
+\usepackage{cancel}
+\geometry{a4paper} 
+\usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+
+
+\usepackage{faktor}
+
+
+% FONTS
+% \setmainfont[Ligatures=TeX]{Cambria Math} % set the main body font (\textrm), assumes Charis SIL is installed
+%\setsansfont{Deja Vu Sans}
+% \setmonofont[Ligatures=TeX]{Fira Code}
+\setmathfont[Ligatures=TeX]{NewCMMath-Regular}
+
+\setmainfont{Cambria}
+\setmonofont[Ligatures=TeX]{Roboto Mono}
+
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+\lstdefinestyle{mystyle}{
+    % backgroundcolor=\color{backcolour},   
+    % commentstyle=\color{codegreen},
+    % keywordstyle=\color{magenta},
+    % numberstyle=\tiny\color{codegray},
+    % stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = red %Colour of citations
+}
+
+
+\newcommand\course{MS1 - Algebra}
+\newcommand\hwnumber{HW 8}                   % <-- homework number
+\newcommand\idgroup{111-2023}                
+\newcommand\idname{Mykhailo Koreshkov}  
+
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfsetup{%
+	backgroundcolor = black!5,
+}
+\mdfdefinestyle{ans}{%
+    backgroundcolor = green!5,
+    linecolor = green!50,
+    linewidth = 1pt,
+}
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\idgroup \\ \idname}
+\chead{\textbf{\Large \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\linespread{1.1}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\cd}{CD}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\ob}{Ob}
+\DeclareMathOperator{\mor}{Mor}
+\DeclareMathOperator{\catring}{Ring}
+
+\newtheorem*{proposition}{Твердження}
+\newtheorem*{definition}{Визначення}
+
+\begin{document}
+
+
+\section*{Ex 8.1}
+\begin{mdframed}
+    Нехай $f: R \to S$ - гомоморфізм комутативних кілець.
+    Нехай $J$ - простий ідеал в $S$. \\
+    Довести, що $I = f^{-1}(J)$ - простий ідеал в $R$.
+\end{mdframed}
+
+\begin{mdframed}[backgroundcolor=purple!20]
+    Ідеал $J$ є простим якщо $R/J$ - область цілісності.\\
+    Еквівалентно, $\forall a,b \in R: (ab\in J) \iff (a\in J)\vee(b\in J)$.
+
+    Також знаємо, що повний прообраз $f^{-1}(J)$ ідеала буде ідеалом.
+% \begin{proof}[Твердження про прообраз ідеала]
+%     Нехай $f: R \to S$ - гомоморфізм комутативних кілець.
+%     Нехай $J$ - ідеал в $S$. Нехай $I = f^{-1}(J)$.
+
+%     Візьмемо довільні $a,b\in I$ та $c \in R$.\\
+%     Відображення є гомоморфізмом, отже $f(a+b) = f(a)+f(b) \in J$ з замкненості $J$.\\
+%     Оскільки $f(a)\in J$, за властивістю поглинання маємо $f(ca) = f(c)\cdot f(a) \in J$.
+
+%     Тобто, $I = f^{-1}(J)$ - ідеал кільця $R$.
+% \end{proof}
+\end{mdframed}
+
+\begin{proof}
+    Доведення від супротивного.\\
+    Нехай $f: R \to S$ - гомоморфізм комутативних кілець.
+    Нехай $J$ - простий ідеал в $S$.
+    Знаємо, що $I = f^{-1}(J)$ буде ідеалом. 
+    Припустимо, що $I = f^{-1}(J)$ не є простим ідеалом, тобто
+    $\exists a,b \in R: ab \in I \land a\notin I \land b \notin I$.\\
+    Іншими словами,
+    $\exists a,b \in R: f(ab) \in J \land f(a) \notin J \land f(b) \notin J$.\\
+    Оскільки $f$ це гомоморфізм, маємо $f(a)f(b) \in J, f(a)\notin J, f(b)\notin J$, а це суперечить умові простоти ідеалу $J$.
+
+    Таким чином довели, що ідеал $I$ має бути простим.
+\end{proof}
+
+\section*{Ex 8.2}
+\begin{mdframed}
+    Нехай $f: R \to S$ - гомоморфізм комутативних кілець.
+    Нехай $J$ - максимальний ідеал в $S$. \\
+    Показати, що $I = f^{-1}(J)$ в загальному випадку не буде максимальним ідеалом в $R$.
+
+    Знайти достатні умови.
+\end{mdframed}
+
+Нехай $f : \Z \to \Z[x], \; f(a) = a + 0x + ...$.
+
+Розглянемо $(2) = \{\sum_{k=0}^n a_kx^k : 2 \mid a_k \forall k\}$.\\
+$\Z[x]/(2) = $
+
+
+\section*{Ex 8.3}
+\begin{mdframed}
+    Нехай $R$ - скінченне комутативне кільце, $I$ - його простий ідеал.\\
+    Довести, що $I$ є максимальним.
+\end{mdframed}
+
+Нехай $|R| = n < \infty$. 
+
+З того, що $I$ - простий, маємо $I \ne (1)$.\\
+$R/I$ буде скінченною областю цілісності та $0_{R/I} \ne 1_{R/I}$.
+
+% \begin{proof}[Твердження 4.31]
+%     Розглянемо відображення  
+%     $f : R/I \to R/I, \; f_a(x+I) = ax+I$.
+    
+%     Нехай $f_a(x+I) = f_a(y+I)$. 
+%     Тоді $(a+I)(x+I) = ax+I = ay+I = (a+I)(y+I)$.
+%     $(a+I)$ - не дільник ноля, отже можна скоротити.
+%     $x+I = y+I$.
+
+%     Таким чином, $f_a$ - ін'єктивне. 
+%     А тоді зі скіченності $R/I$ маємо, що $f_a - бієкція$.
+%     Тоді $\forall a+I \in R/I, a+I \ne I: \exists (a+I)^{-1}$, 
+%     тобто $R/I$ - поле.
+% \end{proof}
+
+Відомо, що скінченні області цілісності є полями. 
+Тоді $R/I$ буде полем.
+
+Тобто $I$ - максимальний ідеал.
+
+
+
+
+
+
+\end{document}
+
