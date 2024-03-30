@@ -213,17 +213,95 @@ ad_{e_4} = (C_{4j}^i) = \begin{pmatrix}
 Диференціали другого порядку зникнуть через достатню гладкість всіх коефіцієнтів. 
 
 \[ [a_1, a_2] = \cancelto{0}{\partial_1(x_2)}\partial_1+\cancelto{0}{\partial_1(x_3)}\partial_2 - x_2\cancelto{0}{\partial_1(1)}\partial_1 - x_3\cancelto{0}{\partial_2(1)}\partial_1 = 0\]
-
 \[ [a_1, a_3] = \partial_1\partial_3 - \partial_3\partial_1 = 0\]
 \begin{align*}
     [a_1, a_4] &= \partial_1(2\lambda x_1 - \frac{1}{2}x_2^2)\partial_1 + \cancelto{0}{\partial_1((\lambda-x_3)x_2)}\partial_2 - \cancelto{0}{\partial_1(1+x_3^2)}\partial_3 - \\
     &- \left(...\partial_1(1)\partial_1 + ...\partial_2(1)\partial_1 + ...\partial_3(1)\partial_1\right) = \\
-    &= 2\lambda\partial_1
+    &= 2\lambda\partial_1 = 2 \lambda a_1
 \end{align*}
+\[ [a_2, a_3] = -1 \cdot \partial_1 = -a_1\]
+\[ [a_2, a_4] = \lambda x_{2} \partial_1 + \lambda x_{3} \partial_2 + \partial_{2} = \lambda a_2 + a_3\]
+\[ [a_3, a_4] = \lambda \partial_2 - x_{2} \partial_1 - x_{3} \partial_2 = \lambda a_3 - a_2 \]
 
-\[ [a_2, a_3] = \]
-\[ [a_2, a_4] = \]
-\[ [a_3, a_4] = \]
+Перевірив за допомогою бібліотеки символьних обчислень для Python
+
+\includegraphics[width=\textwidth]{1.png}
+
+Тобто 
+\[\g : [a_1, a_4] = 2\lambda a_1; \quad [a_2, a_3] = -a_1; \quad [a_2, a_4] = \lambda a_2 + a_3; \quad [a_3, a_4] = \lambda a_3 - a_2. \]
+
+$[a_2+\lambda a_3,a_4] = \lambda a_2 + a_3 + \lambda^2 a_3 - \lambda a_2 = (1+\lambda^2) a_3$\\
+$[a_3-\lambda a_2, a_4] = \lambda a_3 - a_2 - \lambda^2 a_2 - \lambda a_3 = -(1+\lambda^2) a_2$
+
+Тобто $\g' = <a_1, a_2, a_3>$.
+
+Не знаю що це за алгебра :(
+
+\section*{№4}
+
+\begin{mdframed}
+    Дослідити на нільпотентність та розв'язність
+    \[\g = \g_{5.6} : [e_1,e_2] = e_3, \quad [e_1,e_3]=e_4, \quad [e_1,e_4]=e_5, \quad [e_2,e_3]=e_5.\]
+\end{mdframed}
+
+$\g^2 = \g' = [\g,\g] = <e_3,e_4,e_5>$ - з правого боку комутаційних співвідношень.
+
+$\g^3 = [\g, \g^2] = <[e_1,e_3],[e_1,e_4],[e_1,e_5],[e_2,e_3],[e_2,e_4],[e_2,e_5],[e_3,e_4],[e_3,e_5],[e_4,e_5]> = $\\
+$= <e_4, e_5, 0, e_5, 0, 0, 0, 0, 0> = <e_4,e_5>$
+
+$\g^4 = [\g, \g^3] = <[e_1,e_4],[e_1,e_5],[e_2,e_4],[e_2,e_5],[e_3,e_4],[e_3,e_5],[e_4,e_5]> = $\\
+$= <e_5,0,0,0,0,0,0> = <e_5>$
+
+$\g^5 = [\g, \g^4] = <[e_1,e_5],[e_2,e_5],[e_3,e_5],[e_4,e_5]> = <0,0,0,0> = 0$
+
+Отже, алгебра \colorbox{green}{нільпотентна}. Звідси маємо, що вона і \colorbox{green}{розв'язна}.
+
+Дійсно
+$\g'' = [\g',\g'] = <[e_3,e_4],[e_3,e_5],[e_4,e_5]> = <0,0,0> = 0$
+
+
+\section*{№5}
+\begin{mdframed}
+    $\g : [e_1,e_2] = e_1, \quad [e_3,e_4]=e_3$.
+    Знайти першу та другу похідні. Перевірити ізоморфність із $\mathfrak{sl}(2,\R)\oplus \g_1$.
+\end{mdframed}
+
+$g' = [\g, \g] = <e_1,e_3>$ - з правого боку комутаційних співвідношень.
+
+$g'' = [\g',\g'] = <[e_1,e_3]> = 0$
+
+Тобто, алгебра \colorbox{green}{розв'язна}.
+
+При цьому 
+$[\g, \g^2] = <[e_1,e_3],[e_2,e_1],[e_2,e_3],[e_4,e_1],[e_4,e_3]> = <e_1,e_3> = \g^2$.\\
+Отже, алгебра \colorbox{green}{не нільпотентна}.
+
+Припустимо, що $x \in Z(\g)$.
+\[[x,y] = (x_1y_2-x_2y_1)e_1 + (x_3y_4-x_4y_3)e_3 = 0\]
+\[\begin{vmatrix}
+    x_1 & x_2 \\ y_1 & y_2
+\end{vmatrix} = \begin{vmatrix}
+    x_3 & x_4 \\ y_3 & y_4
+\end{vmatrix} = 0\]
+\[\forall y: \begin{cases}
+    x_1 = k_1 y_1\\
+    x_2 = k_1 y_2\\
+    x_3 = k_2 y_3\\
+    x_4 = k_2 y_4
+\end{cases}\]
+
+Тобто $x = 0$, бо інакше можна було би обрати непропорційні $y,z$ такі що вони обидва пропорнціні $x$.\\
+\colorbox{green}{$\dim Z(\g) = 0$}
+
+\begin{mdframed}
+    $\mathfrak{s} = \mathfrak{sl}(2,\R)\oplus \g_1 : [x_1,x_2]=x_1, \quad [x_2,x_3]=x_3, \quad [x_1,x_3]=2x_2.$
+\end{mdframed}
+
+За визначенням $\mathfrak{s}$, маємо нульові комутаціні співвідношення $x_4$ з усіма іншими базисними елементами, 
+тобто $\left<x_4\right> \subset Z(\mathfrak s)$, звідки \colorbox{green}{$\dim Z(\mathfrak s) \ge 1$}.
+
+Але $\dim Z(\g) = 0$, а ізоморфізм має зберігати розмірність центру. \\
+Тому, \colorbox{green}{$\g$ не може бути ізоморфна $\mathfrak{sl}(2,\R)\oplus \g_1$}.
 
 
 \end{document}
