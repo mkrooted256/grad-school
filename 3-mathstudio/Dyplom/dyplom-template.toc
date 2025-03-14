@@ -1,0 +1,11 @@
+\babel@toc {ukrainian}{}\relax 
+\contentsline {chapter}{Перелік умовних позначень}{5}{section*.2}%
+\contentsline {chapter}{Вступ}{6}{section*.3}%
+\contentsline {chapter}{{\noindent {\cyrillictext \CYRR \cyro \cyrz \cyrd \cyrii \cyrl }\hspace {2mm}1}\hfil \break Назва розділу}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1.\ }Назва секції}{7}{section.1.1}%
+\contentsline {chapter}{{\noindent {\cyrillictext \CYRR \cyro \cyrz \cyrd \cyrii \cyrl }\hspace {2mm}2}\hfil \break Назва розділу}{8}{chapter.2}%
+\contentsline {section}{\numberline {2.1.\ }Назва секції}{8}{section.2.1}%
+\contentsline {chapter}{Висновки}{9}{section*.4}%
+\contentsline {chapter}{Список використаних джерел}{10}{section*.5}%
+\contentsline {chapter}{{\noindent {\cyrillictext \CYRD \cyro \cyrd \cyra \cyrt \cyro \cyrk }\hspace {2mm}\CYRA }\hfil \break Назва додатку}{11}{appendix.Alph1}%
+\contentsline {section}{\numberline {\CYRA .1.\ }Назва секції додатку}{11}{section.Alph1.1}%

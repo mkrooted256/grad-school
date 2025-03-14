@@ -1,0 +1,278 @@
+\documentclass{thesis}
+
+\renewcommand{\baselinestretch}{1.20}
+
+\newcommand{\MyFullName}{КОРЕШКОВ~Михайло Олександрович}
+\newcommand{\MyInitialName}{Корешков~М.О.}
+\newcommand{\MyReverseInitialName}{М.О.~Корешков}
+\newcommand{\ThesisName}{[ТИМЧАСОВА] Розробка високопаралельного алгоритму локального бінарного шаблону з оптимальним набором векторів ознак для семантичної сегментації гістопатологічних зображень}
+
+\newcommand{\SuperviserFullName}{ФРОЛОВА Аліна Олександрівна}
+\newcommand{\SuperviserInitialName}{Фролова~А.О.}
+\newcommand{\SuperviserReverseInitialName}{А.О.~Фролова}
+\newcommand{\SuperviserAffiliation}{Молодший науковий співробітник\\Інституту молекулярної біології\\і генетики НАН~України}
+
+\newcommand{\NumPages}{??}
+\newcommand{\NumCitations}{??}
+
+\newcommand{\MyFullNameEn}{Koreshkov~Mykhailo}
+\newcommand{\MyInitialNameEn}{Koreshkov~M.O.}
+\newcommand{\MyReverseInitialNameEn}{M.O.~Koreshkov}
+\newcommand{\ThesisNameEn}{[TEMPORARY] Development of highly parallel local binary patterns algorithm with a modified feature vector for semantic segmentation of histopathological images}
+
+\newcommand{\SuperviserFullNameEn}{Frolova Alina}
+\newcommand{\SuperviserInitialNameEn}{Frolova~A.O.}
+\newcommand{\SuperviserReverseInitialNameEn}{A.O.~Frolova}
+\newcommand{\SuperviserAffiliationEn}{Junior Research Fellow at Institute of molecular biology and genetics of National academy of sciences of Ukraine}
+
+% TODO
+% Розшифровування не потрібно!
+\newcommand{\MSC}{62H30~Класифікація та дискримінація; кластерний аналіз, 62\nobreakdash-08~Обчислювальні методи для задач статистики, 62P10~Застосування статистики в біології та природничих науках, 68T10~Розпізнавання образів}
+\newcommand{\MSCEn}{62H30~Classification and discrimination; cluster analysis (statistical aspects), 62-08~Computational methods for problems pertaining to statistics, 62P10~Applications of statistics to biology and medical sciences, 68T10~Pattern recognition}
+
+\newcommand{\E}{\operatorname{\mathbb E}}
+\newcommand{\D}{\operatorname{\mathbb D}}
+\renewcommand{\P}{\operatorname{\mathbb P}}
+
+% З титулки прибрати "Тема" і лапки
+
+% Диплом можна англійською. Анотація та титулка має бути обома мовами.
+% Презентація диплому має бути українською (слайди можна англійською!).
+% В'ячеслав Миколайович рекомендує починати з літератури (bib).
+% Ключові слова у порядку важливості.
+% Подумати про сортування умовних позначень
+
+\begin{document}
+\allowdisplaybreaks
+
+\large
+
+\setcounter{page}{1}
+\thispagestyle{empty}
+\centerline{Національна академія наук України}
+\centerline{Міністерство освіти і науки України}
+\centerline{Державна наукова установа «Київський академічний університет»}
+
+\vspace{10mm}
+
+\begin{flushright}
+\begin{minipage}{100mm}
+\begin{center}\large {\bf <<Допущено до захисту>>}\\
+Завідувач кафедри математики,\\
+доктор фіз.-мат. наук\\
+{\bf Вячеслав БОЙКО}\\
+<<\underline{\hspace{8mm}}>> травня 2025 р.
+\end{center}
+\end{minipage}
+\end{flushright}
+
+\vspace{10mm}
+
+\centerline{\Large \bf \MyFullName}
+
+\begin{center}
+{\bf КВАЛІФІКАЦІЙНА РОБОТА}\\
+на здобуття освітнього ступеня <<магістр>>\\
+Спеціальність 111 <<Математика>>\\[4mm]
+{\Large \bf Тема: <<\ThesisName>>}
+\end{center}
+
+
+\vspace{5mm}
+
+\noindent
+{Засвідчую, що кваліфікаційна робота містить результати власних досліджень. Використання ідей, результатів і~текстів інших авторів мають посилання на відповідне джерело.
+\underline{\hspace{18mm}} \MyReverseInitialName \par}
+
+\vspace{5mm}
+
+\begin{flushright}
+\begin{minipage}{90mm}
+\large {\bf Науковий керівник}\\
+% доктор фіз.-мат. наук, професор\\
+\SuperviserAffiliation\\
+{\bf \SuperviserFullName }\\
+\underline{\hspace{48mm}}
+
+\end{minipage}
+\end{flushright}
+
+
+\vfill
+
+\centerline{\bf Київ --- 2025}
+
+\newpage
+
+\begin{center}
+\Large \bf Анотація
+\end{center}
+
+\noindent
+\textbf{\MyInitialName}, \textbf{\ThesisName}, Кваліфікаційна робота на здобуття освітнього ступеня <<магістр>> за спеціальністю 111 Математика, Київський академічний університет, Київ, 2025, \NumPages~с., \NumCitations~джерел.
+
+\bigskip
+
+
+{\bf ???Текст анотації???}
+
+\bigskip
+
+\noindent
+{\bf MSC:} \MSC
+
+\bigskip
+
+\noindent
+{\bf Ключові слова:} сегментація зображень, текстурний дескриптор, локальні бінарні шаблони, метрики якості кластеризації.
+\bigskip
+
+\newpage
+
+\begin{center}
+\Large \bf Abstract
+\end{center}
+
+\noindent
+\textbf{\MyReverseInitialNameEn}, \textbf{\ThesisNameEn}, Master Thesis, speciality 111 Mathematics.~--
+Kyiv Academic University, Kyiv, 2025, \NumPages~pages, \NumCitations~references.
+
+\bigskip
+{\bf ???Abstract???}
+
+\bigskip
+
+\noindent
+{\bf MCS:} \MSCEn %for 111, see https://mathscinet.ams.org/mathscinet/msc/msc2020.html
+
+%\noindent
+%{\bf ACM:} ??????? %for 122, see https://cran.r-project.org/web/classifications/ACM.html
+
+\bigskip
+
+\noindent
+{\bf Key words:} image segmentation, texture descriptor, local binary patterns, clustering metrics
+
+
+\newpage
+
+
+\tableofcontents
+
+\newpage
+
+\phantomsection
+\section*{Перелік умовних позначень}
+\addcontentsline{toc}{chapter}{Перелік умовних позначень}
+
+\bigskip
+
+
+\begin{tabular}{ll}
+$\mathbb R^n$ & $n$-вимірний евклідів простір\\[1mm]
+$2^A$ & Булеан множини $A$, $2^A = \{B \mid B \subset A\}$ \\
+$\Omega, E$ & Простори елементарних подій \\
+$\mathcal F \subset 2^\Omega, \; \mathcal E \subset 2^E$ & $\sigma$-алгебри на просторі елементарних подій \\
+$A, B, C \in \mathcal F$ & Випадкові події, елементи $\sigma$-алгебри \\
+$1_A(x)$ & Індикатор події (вимірної множини) $A$ \\
+$\P(A)$ & Ймовірність події $A$ \\
+$\P(A\mid B)$ & Умовна ймовірність події $A$ за умови $B$ \\
+$X, Y, Z, \xi, \psi, \zeta$ & Випадкові величини (в.в.) \\
+$F, F_X$ & Функція розподілу в.в. \\
+$\E X, \D X$ & Математичне сподівання та дисперсія в.в. \\
+$\Theta \ni \theta$ & Простір параметрів. $\theta = (\theta_1, ..., \theta_n) \in \Theta \subset \mathbb R^n$ \\
+$\P_\theta(A),\;\E_\theta X,\;\D_\theta X$ & Позначення для $\P(A\mid \theta), \E(X \mid \theta), \D( X \mid \theta)$ \\
+$\text{iid}$ & незалежні в сукупності однаково розподілені в.в. \\
+$\text{a.s.}$ & майже скрізь; із ймовірністю 1 \\
+$X_1, ..., X_n \sim F \quad \text{iid}$ & Послідовність незалежних однаково розподілених \\
+~ & випадкових величин із законом розподілу $F$ \\
+$\nu_a$ & Частота значення $a$ у послідовності iid; \\
+~ & $\nu_a = \sum_{k=1}^n 1_{\{a\}}(X_k)$ \\
+
+\end{tabular}
+
+
+\newpage
+
+\phantomsection
+\chapter*{Вступ}\label{Introduction}
+\addcontentsline{toc}{chapter}{Вступ}
+
+??????????
+\cite{boyko-thesis,boyko2021,PopovychBoykoNesterenkoLutfullin2003}
+
+\newpage
+
+\chapter{Назва розділу}\label{chaper1}
+
+\section{Назва секції}\label{section1.1}
+
+\newpage
+
+\chapter{Назва розділу}\label{chaper2}
+
+\section{Назва секції}\label{section2.1}
+
+
+\newpage
+
+\phantomsection
+\chapter*{Висновки}
+\addcontentsline{toc}{chapter}{Висновки}
+
+У роботі ??????
+
+\newpage
+
+\phantomsection
+\renewcommand{\bibname}{Список використаних джерел}
+
+\begin{thebibliography}{99}
+\addcontentsline{toc}{chapter}{Список використаних джерел}
+\itemsep=0pt
+
+\bibitem{boyko-thesis}
+Бойко В.М.,
+Узагальненi оператори Казiмiра,
+сингулярнi модулi редукцiї
+та симетрiї диференцiальних рiвнянь,
+Дис. \dots\ док. фіз.-мат. наук,  Інституту математики НАН України, Київ, 2018, 338~с., \url{https://www.imath.kiev.ua/~boyko/BoykoThesis.pdf}.
+
+
+
+\bibitem{boyko2021}
+Boyko V.M., Lokaziuk O.V., Popovych R.O.,
+Admissible transformations and Lie symmetries of linear systems of second-order ordinary differential equations, \href{https://arxiv.org/abs/2105.05139}{arXiv:2105.05139}.
+
+\bibitem{Maple17}
+Maple 17, \url{https://www.maplesoft.com/products/Maple/}.
+
+
+\bibitem{Olver1995}
+Olver P.J., Equivalence, invariants, and symmetry, Cambridge, University Press Cambridge, 1995, xvi+525~pp.,
+\url{https://doi.org/10.1017/CBO9780511609565}.
+
+
+\bibitem{PopovychBoykoNesterenkoLutfullin2003}
+Popovych R.O., Boyko V.M., Nesterenko M.O., Lutfullin M.V., Realizations of real low-dimensional Lie algebras, \textit{J.~Phys.~A} \textbf{36} (2003), no.~26,
+7337--7360, \url{https://doi.org/10.1088/0305-4470/36/26/309}; \href{https://arxiv.org/abs/math-ph/0301029}{math-ph/0301029}.
+
+
+
+\end{thebibliography}
+
+\appendix
+
+\chapter{Назва додатку}\label{appendix1}
+
+\section{Назва секції додатку}\label{appendix1.1}
+
+\end{document}
+
+\newpage
+
+\bibliographystyle{plain} %plain %sigma %amsalpha %ugost2008
+\bibliography{ref}
+
+
+
