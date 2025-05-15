@@ -1,0 +1,22 @@
+\babel@toc {ukrainian}{}\relax 
+\contentsline {chapter}{Перелік умовних позначень}{6}{section*.2}%
+\contentsline {chapter}{Вступ}{8}{section*.3}%
+\contentsline {chapter}{{\noindent {\cyrillictext \CYRR \cyro \cyrz \cyrd \cyrii \cyrl }\hspace {2mm}1}\hfil \break Перший розділ}{11}{chapter.1}%
+\contentsline {section}{\numberline {1.1.\ }Огляд моделей текстур}{11}{section.1.1}%
+\contentsline {section}{\numberline {1.2.\ }Статистика LBP}{12}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1.\ }Узагальнений \(LBP_{R,P}\)}{15}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2.\ }Інваріантність відносно обертання у \(LBP_{R,P}^{ri}\)}{16}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3.\ }Частотне представлення кодів LBP}{18}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4.\ }Гістограма та класифікація текстур}{18}{subsection.1.2.4}%
+\contentsline {section}{\numberline {1.3.\ }Автокореляційні моделі з гаусовим шумом}{20}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1.\ }Моделі малих порядків}{20}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2.\ }Інваріантність відносно обертання}{20}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3.\ }Збереження інформації про орієнтацію}{21}{subsection.1.3.3}%
+\contentsline {section}{\numberline {1.4.\ }Інші текстурні моделі}{21}{section.1.4}%
+\contentsline {section}{\numberline {1.5.\ }Модель марківського випадкового поля на основі гістограм}{21}{section.1.5}%
+\contentsline {section}{\numberline {1.6.\ }Вибір інформативних ознак}{21}{section.1.6}%
+\contentsline {chapter}{{\noindent {\cyrillictext \CYRR \cyro \cyrz \cyrd \cyrii \cyrl }\hspace {2mm}2}\hfil \break Назва розділу}{22}{chapter.2}%
+\contentsline {section}{\numberline {2.1.\ }Назва секції}{22}{section.2.1}%
+\contentsline {chapter}{Висновки}{23}{section*.7}%
+\contentsline {chapter}{{\noindent {\cyrillictext \CYRD \cyro \cyrd \cyra \cyrt \cyro \cyrk }\hspace {2mm}\CYRA }\hfil \break Назва додатку}{27}{appendix.Alph1}%
+\contentsline {section}{\numberline {\CYRA .1.\ }Назва секції додатку}{27}{section.Alph1.1}%

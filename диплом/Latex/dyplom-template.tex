@@ -1,11 +1,13 @@
 \documentclass{thesis}
 
+\usepackage[skins]{tcolorbox}
+
 \renewcommand{\baselinestretch}{1.20}
 
 \newcommand{\MyFullName}{КОРЕШКОВ~Михайло Олександрович}
 \newcommand{\MyInitialName}{Корешков~М.О.}
 \newcommand{\MyReverseInitialName}{М.О.~Корешков}
-\newcommand{\ThesisName}{[ТИМЧАСОВА] Розробка високопаралельного алгоритму локального бінарного шаблону з оптимальним набором векторів ознак для семантичної сегментації гістопатологічних зображень}
+\newcommand{\ThesisName}{Розробка високопаралельного алгоритму локального бінарного шаблону з оптимальним набором векторів ознак для семантичної сегментації гістопатологічних зображень}
 
 \newcommand{\SuperviserFullName}{ФРОЛОВА Аліна Олександрівна}
 \newcommand{\SuperviserInitialName}{Фролова~А.О.}
@@ -18,7 +20,7 @@
 \newcommand{\MyFullNameEn}{Koreshkov~Mykhailo}
 \newcommand{\MyInitialNameEn}{Koreshkov~M.O.}
 \newcommand{\MyReverseInitialNameEn}{M.O.~Koreshkov}
-\newcommand{\ThesisNameEn}{[TEMPORARY] Development of highly parallel local binary patterns algorithm with a modified feature vector for semantic segmentation of histopathological images}
+\newcommand{\ThesisNameEn}{Development of highly parallel local binary patterns algorithm with feature engineering for semantic segmentation of histopathological images}
 
 \newcommand{\SuperviserFullNameEn}{Frolova Alina}
 \newcommand{\SuperviserInitialNameEn}{Frolova~A.O.}
@@ -30,9 +32,21 @@
 \newcommand{\MSC}{62H30~Класифікація та дискримінація; кластерний аналіз, 62\nobreakdash-08~Обчислювальні методи для задач статистики, 62P10~Застосування статистики в біології та природничих науках, 68T10~Розпізнавання образів}
 \newcommand{\MSCEn}{62H30~Classification and discrimination; cluster analysis (statistical aspects), 62-08~Computational methods for problems pertaining to statistics, 62P10~Applications of statistics to biology and medical sciences, 68T10~Pattern recognition}
 
+% MY COMMANDS
 \newcommand{\E}{\operatorname{\mathbb E}}
 \newcommand{\D}{\operatorname{\mathbb D}}
 \renewcommand{\P}{\operatorname{\mathbb P}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+
+\usepackage[bb=dsserif]{mathalpha}
+\usepackage{bm}
+\newcommand{\1}{\mathbb 1}
+
+% colorbox
+\tcbset{commonstyle/.style={boxrule=0pt,sharp corners,enhanced jigsaw,nobeforeafter,boxsep=0pt,left=\fboxsep,right=\fboxsep}}
+\newtcolorbox{todobox}[1][]{commonstyle,#1}
+\newcommand{\todo}[1]{\begin{todobox}[colback=Yellow] \textbf{TODO:} #1 \end{todobox}}
 
 % З титулки прибрати "Тема" і лапки
 
@@ -74,7 +88,7 @@
 {\bf КВАЛІФІКАЦІЙНА РОБОТА}\\
 на здобуття освітнього ступеня <<магістр>>\\
 Спеціальність 111 <<Математика>>\\[4mm]
-{\Large \bf Тема: <<\ThesisName>>}
+{\Large \bf <<\ThesisName>>}
 \end{center}
 
 
@@ -165,51 +179,22 @@ Kyiv Academic University, Kyiv, 2025, \NumPages~pages, \NumCitations~references.
 \section*{Перелік умовних позначень}
 \addcontentsline{toc}{chapter}{Перелік умовних позначень}
 
-\bigskip
-
-
-\begin{tabular}{ll}
-$\mathbb R^n$ & $n$-вимірний евклідів простір\\[1mm]
-$2^A$ & Булеан множини $A$, $2^A = \{B \mid B \subset A\}$ \\
-$\Omega, E$ & Простори елементарних подій \\
-$\mathcal F \subset 2^\Omega, \; \mathcal E \subset 2^E$ & $\sigma$-алгебри на просторі елементарних подій \\
-$A, B, C \in \mathcal F$ & Випадкові події, елементи $\sigma$-алгебри \\
-$1_A(x)$ & Індикатор події (вимірної множини) $A$ \\
-$\P(A)$ & Ймовірність події $A$ \\
-$\P(A\mid B)$ & Умовна ймовірність події $A$ за умови $B$ \\
-$X, Y, Z, \xi, \psi, \zeta$ & Випадкові величини (в.в.) \\
-$F, F_X$ & Функція розподілу в.в. \\
-$\E X, \D X$ & Математичне сподівання та дисперсія в.в. \\
-$\Theta \ni \theta$ & Простір параметрів. $\theta = (\theta_1, ..., \theta_n) \in \Theta \subset \mathbb R^n$ \\
-$\P_\theta(A),\;\E_\theta X,\;\D_\theta X$ & Позначення для $\P(A\mid \theta), \E(X \mid \theta), \D( X \mid \theta)$ \\
-$\text{iid}$ & незалежні в сукупності однаково розподілені в.в. \\
-$\text{a.s.}$ & майже скрізь; із ймовірністю 1 \\
-$X_1, ..., X_n \sim F \quad \text{iid}$ & Послідовність незалежних однаково розподілених \\
-~ & випадкових величин із законом розподілу $F$ \\
-$\nu_a$ & Частота значення $a$ у послідовності iid; \\
-~ & $\nu_a = \sum_{k=1}^n 1_{\{a\}}(X_k)$ \\
-
-\end{tabular}
-
+\include{parts/0-умовні-позначення}
 
 \newpage
 
 \phantomsection
 \chapter*{Вступ}\label{Introduction}
 \addcontentsline{toc}{chapter}{Вступ}
-
-??????????
-\cite{boyko-thesis,boyko2021,PopovychBoykoNesterenkoLutfullin2003}
+\include{parts/1-вступ}
 
 \newpage
 
-\chapter{Назва розділу}\label{chaper1}
-
-\section{Назва секції}\label{section1.1}
+\include{parts/2_1}
 
 \newpage
 
-\chapter{Назва розділу}\label{chaper2}
+\chapter{Назва розділу}\label{chapter2}
 
 \section{Назва секції}\label{section2.1}
 
@@ -227,39 +212,18 @@ $\nu_a$ & Частота значення $a$ у послідовності iid;
 \phantomsection
 \renewcommand{\bibname}{Список використаних джерел}
 
-\begin{thebibliography}{99}
-\addcontentsline{toc}{chapter}{Список використаних джерел}
-\itemsep=0pt
+\newpage
 
-\bibitem{boyko-thesis}
-Бойко В.М.,
-Узагальненi оператори Казiмiра,
-сингулярнi модулi редукцiї
-та симетрiї диференцiальних рiвнянь,
-Дис. \dots\ док. фіз.-мат. наук,  Інституту математики НАН України, Київ, 2018, 338~с., \url{https://www.imath.kiev.ua/~boyko/BoykoThesis.pdf}.
+\bibliographystyle{plain} %plain %sigma %amsalpha %ugost2008
+\bibliography{ref}
 
+% \begin{thebibliography}{99}
+% \addcontentsline{toc}{chapter}{Список використаних джерел}
+% \itemsep=0pt
 
+% % TODO: чому не працює
 
-\bibitem{boyko2021}
-Boyko V.M., Lokaziuk O.V., Popovych R.O.,
-Admissible transformations and Lie symmetries of linear systems of second-order ordinary differential equations, \href{https://arxiv.org/abs/2105.05139}{arXiv:2105.05139}.
-
-\bibitem{Maple17}
-Maple 17, \url{https://www.maplesoft.com/products/Maple/}.
-
-
-\bibitem{Olver1995}
-Olver P.J., Equivalence, invariants, and symmetry, Cambridge, University Press Cambridge, 1995, xvi+525~pp.,
-\url{https://doi.org/10.1017/CBO9780511609565}.
-
-
-\bibitem{PopovychBoykoNesterenkoLutfullin2003}
-Popovych R.O., Boyko V.M., Nesterenko M.O., Lutfullin M.V., Realizations of real low-dimensional Lie algebras, \textit{J.~Phys.~A} \textbf{36} (2003), no.~26,
-7337--7360, \url{https://doi.org/10.1088/0305-4470/36/26/309}; \href{https://arxiv.org/abs/math-ph/0301029}{math-ph/0301029}.
-
-
-
-\end{thebibliography}
+% \end{thebibliography}
 
 \appendix
 
@@ -268,11 +232,6 @@ Popovych R.O., Boyko V.M., Nesterenko M.O., Lutfullin M.V., Realizations of real
 \section{Назва секції додатку}\label{appendix1.1}
 
 \end{document}
-
-\newpage
-
-\bibliographystyle{plain} %plain %sigma %amsalpha %ugost2008
-\bibliography{ref}
 
 
 

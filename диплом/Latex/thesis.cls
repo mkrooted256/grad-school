@@ -20,9 +20,11 @@
 \RequirePackage{indentfirst}
 \RequirePackage{comment}
 \RequirePackage{enumerate}
-\RequirePackage{color}
+\RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{url}
 \RequirePackage[labelsep=period]{caption}
+
+\RequirePackage{subcaption}
 
 \RequirePackage[
  pdftex,

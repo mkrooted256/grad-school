@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: dyplom-template.aux
+Reallocating 'name_of_file' (item size: 1) to 46 items.
+A level-1 auxiliary file: parts/0-умовні-позначення.aux
+Reallocating 'name_of_file' (item size: 1) to 23 items.
+A level-1 auxiliary file: parts/1-вступ.aux
+Reallocating 'name_of_file' (item size: 1) to 14 items.
+A level-1 auxiliary file: parts/2_1.aux
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: plain.bst
+Reallocating 'name_of_file' (item size: 1) to 4 items.
+Database file #1: ref.bib
+You've used 15 entries,
+            2118 wiz_defined-function locations,
+            603 strings with 7031 characters,
+and the built_in function-call counts, 5593 in all, are:
+= -- 544
+> -- 268
+< -- 4
++ -- 108
+- -- 90
+* -- 424
+:= -- 918
+add.period$ -- 45
+call.type$ -- 15
+change.case$ -- 89
+chr.to.int$ -- 0
+cite$ -- 15
+duplicate$ -- 193
+empty$ -- 436
+format.name$ -- 90
+if$ -- 1171
+int.to.chr$ -- 0
+int.to.str$ -- 15
+missing$ -- 14
+newline$ -- 78
+num.names$ -- 30
+pop$ -- 79
+preamble$ -- 1
+purify$ -- 74
+quote$ -- 0
+skip$ -- 145
+stack$ -- 0
+substring$ -- 404
+swap$ -- 42
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 60
+warning$ -- 0
+while$ -- 53
+width$ -- 17
+write$ -- 167

@@ -1,0 +1,99 @@
+\begin{thebibliography}{10}
+
+\bibitem{arof1998}
+H.~Arof and F.~Deravi.
+\newblock Circular neighbourhood and 1-d dft features for texture
+  classification and segmentation.
+\newblock {\em IEE Proceedings - Vision, Image and Signal Processing},
+  145:167--172, 1998.
+
+\bibitem{belsare2015}
+A.~D. Belsare, M.~M. Mushrif, M.~A. Pangarkar, and N.~Meshram.
+\newblock Classification of breast cancer histopathology images using texture
+  feature analysis.
+\newblock In {\em TENCON 2015 - 2015 IEEE Region 10 Conference}, pages 1--5,
+  2015.
+
+\bibitem{bober2001}
+Miroslaw Bober.
+\newblock Mpeg-7 visual shape descriptors.
+\newblock {\em IEEE Transactions on circuits and systems for video technology},
+  11(6):716--719, 2001.
+
+\bibitem{huawudeng2004}
+Huawu Deng and D.A. Clausi.
+\newblock Gaussian mrf rotation-invariant features for image classification.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  26(7):951--955, 2004.
+
+\bibitem{esteva2017}
+Andre Esteva, Brett Kuprel, Roberto~A Novoa, Justin Ko, Susan~M Swetter,
+  Helen~M Blau, and Sebastian Thrun.
+\newblock Dermatologist-level classification of skin cancer with deep neural
+  networks.
+\newblock {\em nature}, 542(7639):115--118, 2017.
+
+\bibitem{guo2010lbpv}
+Zhenhua Guo, Lei Zhang, and David Zhang.
+\newblock Rotation invariant texture classification using lbp variance (lbpv)
+  with global matching.
+\newblock {\em Pattern recognition}, 43(3):706--719, 2010.
+
+\bibitem{haley1999}
+G.M. Haley and B.S. Manjunath.
+\newblock Rotation-invariant texture classification using a complete
+  space-frequency model.
+\newblock {\em IEEE Transactions on Image Processing}, 8(2):255--269, 1999.
+
+\bibitem{julesz1981}
+Bela Julesz.
+\newblock A theory of preattentive texture discrimination based on first-order
+  statistics of textons.
+\newblock {\em Biological Cybernetics}, 41(2):131--138, 1981.
+
+\bibitem{kashyap1986}
+Rangasami~L. Kashyap and Alireza Khotanzad.
+\newblock A model-based method for rotation invariant texture classification.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  PAMI-8(4):472--481, 1986.
+
+\bibitem{fastlbp2024}
+Mykhailo Koreshkov, Benjamin Woodhams, Dmytro Horyslavets, Alina Frolova,
+  Virginie Uhlmann, et~al.
+\newblock fastlbp: a texture descriptor for large digital pathology images.
+\newblock Poster session at ECCB 2024, Turku, Finland, 2024.
+
+\bibitem{ojala2002}
+T.~Ojala, M.~Pietikainen, and T.~Maenpaa.
+\newblock Multiresolution gray-scale and rotation invariant texture
+  classification with local binary patterns.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  24(7):971--987, 2002.
+
+\bibitem{portilla2000}
+Javier Portilla and Eero~P Simoncelli.
+\newblock A parametric texture model based on joint statistics of complex
+  wavelet coefficients.
+\newblock {\em International journal of computer vision}, 40:49--70, 2000.
+
+\bibitem{simon2018}
+Olivier Simon, Rabi Yacoub, Sanjay Jain, John~E Tomaszewski, and Pinaki Sarder.
+\newblock Multi-radial lbp features as a tool for rapid glomerular detection
+  and assessment in whole slide histopathology images.
+\newblock {\em Scientific reports}, 8(1):2032, 2018.
+
+\bibitem{simoncelli1998}
+E.P. Simoncelli and J.~Portilla.
+\newblock Texture characterization via joint statistics of wavelet coefficient
+  magnitudes.
+\newblock In {\em Proceedings 1998 International Conference on Image
+  Processing. ICIP98 (Cat. No.98CB36269)}, volume~1, pages 62--66 vol.1, 1998.
+
+\bibitem{Wang_2018_CVPR}
+Yaming Wang, Vlad~I. Morariu, and Larry~S. Davis.
+\newblock Learning a discriminative filter bank within a cnn for fine-grained
+  recognition.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition (CVPR)}, pages 4148--4157, June 2018.
+
+\end{thebibliography}
