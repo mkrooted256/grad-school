@@ -63,6 +63,14 @@ Mykhailo Koreshkov, Benjamin Woodhams, Dmytro Horyslavets, Alina Frolova,
 \newblock fastlbp: a texture descriptor for large digital pathology images.
 \newblock Poster session at ECCB 2024, Turku, Finland, 2024.
 
+\bibitem{lee2025integrated}
+Jimmy Tsz~Hang Lee, Sam~N Barnett, Kenny Roberts, Helen Ashwin, Luke Milross,
+  Jae-Won Cho, Alik Huseynov, Benjamin Woodhams, Alexander Aivazidis, Tong Li,
+  et~al.
+\newblock Integrated histopathology, spatial and single cell transcriptomics
+  resolve cellular drivers of early and late alveolar damage in covid-19.
+\newblock {\em Nature Communications}, 16(1):1979, 2025.
+
 \bibitem{ojala2002}
 T.~Ojala, M.~Pietikainen, and T.~Maenpaa.
 \newblock Multiresolution gray-scale and rotation invariant texture

@@ -4,51 +4,55 @@ The top-level auxiliary file: dyplom-template.aux
 Reallocating 'name_of_file' (item size: 1) to 46 items.
 A level-1 auxiliary file: parts/0-умовні-позначення.aux
 Reallocating 'name_of_file' (item size: 1) to 23 items.
-A level-1 auxiliary file: parts/1-вступ.aux
+A level-1 auxiliary file: parts/0-вступ.aux
 Reallocating 'name_of_file' (item size: 1) to 14 items.
-A level-1 auxiliary file: parts/2_1.aux
+A level-1 auxiliary file: parts/1_1.aux
+Reallocating 'name_of_file' (item size: 1) to 14 items.
+A level-1 auxiliary file: parts/1_2.aux
+Reallocating 'name_of_file' (item size: 1) to 14 items.
+A level-1 auxiliary file: parts/1_3.aux
 Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
 Reallocating 'name_of_file' (item size: 1) to 4 items.
 Database file #1: ref.bib
-You've used 15 entries,
+You've used 16 entries,
             2118 wiz_defined-function locations,
-            603 strings with 7031 characters,
-and the built_in function-call counts, 5593 in all, are:
-= -- 544
-> -- 268
+            612 strings with 7443 characters,
+and the built_in function-call counts, 6162 in all, are:
+= -- 590
+> -- 326
 < -- 4
-+ -- 108
-- -- 90
-* -- 424
-:= -- 918
-add.period$ -- 45
-call.type$ -- 15
-change.case$ -- 89
++ -- 131
+- -- 112
+* -- 482
+:= -- 1023
+add.period$ -- 48
+call.type$ -- 16
+change.case$ -- 102
 chr.to.int$ -- 0
-cite$ -- 15
-duplicate$ -- 193
-empty$ -- 436
-format.name$ -- 90
-if$ -- 1171
+cite$ -- 16
+duplicate$ -- 204
+empty$ -- 460
+format.name$ -- 112
+if$ -- 1276
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 14
-newline$ -- 78
-num.names$ -- 30
-pop$ -- 79
+int.to.str$ -- 16
+missing$ -- 15
+newline$ -- 83
+num.names$ -- 32
+pop$ -- 90
 preamble$ -- 1
-purify$ -- 74
+purify$ -- 86
 quote$ -- 0
-skip$ -- 145
+skip$ -- 153
 stack$ -- 0
-substring$ -- 404
-swap$ -- 42
+substring$ -- 421
+swap$ -- 43
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
+type$ -- 64
 warning$ -- 0
-while$ -- 53
-width$ -- 17
-write$ -- 167
+while$ -- 56
+width$ -- 18
+write$ -- 178

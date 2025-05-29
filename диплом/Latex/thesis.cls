@@ -42,7 +42,7 @@
 
 \numberwithin{table}{chapter}
 
-\numberwithin{footnote}{chapter}
+% \numberwithin{footnote}{chapter}
 
 \numberwithin{figure}{section}
 
