@@ -25,6 +25,7 @@
 \RequirePackage[labelsep=period]{caption}
 
 \RequirePackage{subcaption}
+\subcaptionsetup{margin=5pt}
 
 \RequirePackage[
  pdftex,
