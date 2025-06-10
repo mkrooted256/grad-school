@@ -380,8 +380,11 @@
 %  *     PAGE HEADS and FOOTS    *
 %  ****************************************
 
-\renewcommand{\@evenhead}{\null\hfill\thepage}
-\renewcommand{\@oddhead}{\null\hfill\thepage}
+% mkrooted: VERSIONING
+\newcommand{\version}{версія 1}
+
+\renewcommand{\@evenhead}{\null \version \hfill\thepage}
+\renewcommand{\@oddhead}{\null \version \hfill\thepage}
 \let\@oddfoot\@empty\let\@evenfoot\@empty
 
 

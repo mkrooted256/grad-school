@@ -16,8 +16,9 @@
 \newcommand{\SuperviserReverseInitialName}{А.О.~Фролова}
 \newcommand{\SuperviserAffiliation}{Молодший науковий співробітник\\Інституту молекулярної біології\\і генетики НАН~України}
 
-\newcommand{\NumPages}{??}
-\newcommand{\NumCitations}{??}
+% ПЕРЕВІРЯТИ ЩОРАЗУ!
+\newcommand{\NumPages}{47}
+\newcommand{\NumCitations}{17}
 
 \newcommand{\MyFullNameEn}{Koreshkov~Mykhailo}
 \newcommand{\MyInitialNameEn}{Koreshkov~M.O.}
@@ -31,8 +32,11 @@
 
 % TODO
 % Розшифровування не потрібно!
-\newcommand{\MSC}{62H30~Класифікація та дискримінація; кластерний аналіз, 62\nobreakdash-08~Обчислювальні методи для задач статистики, 62P10~Застосування статистики в біології та природничих науках, 68T10~Розпізнавання образів}
-\newcommand{\MSCEn}{62H30~Classification and discrimination; cluster analysis (statistical aspects), 62-08~Computational methods for problems pertaining to statistics, 62P10~Applications of statistics to biology and medical sciences, 68T10~Pattern recognition}
+% \newcommand{\MSC}{62H30~Класифікація та дискримінація; кластерний аналіз, 62\nobreakdash-08~Обчислювальні методи для задач статистики, 62P10~Застосування статистики в біології та природничих науках, 68T10~Розпізнавання образів}
+% \newcommand{\MSCEn}{62H30~Classification and discrimination; cluster analysis (statistical aspects), 62-08~Computational methods for problems pertaining to statistics, 62P10~Applications of statistics to biology and medical sciences, 68T10~Pattern recognition}
+
+\newcommand{\MSC}{62H30, 62-08, 62P10, 68T10.}
+\newcommand{\MSCEn}{62H30, 62-08, 62P10, 68T10.}
 
 % MY COMMANDS
 \newcommand{\E}{\operatorname{\mathbb E}}
@@ -90,7 +94,7 @@
 {\bf КВАЛІФІКАЦІЙНА РОБОТА}\\
 на здобуття освітнього ступеня <<магістр>>\\
 Спеціальність 111 <<Математика>>\\[4mm]
-{\Large \bf <<\ThesisName>>}
+{\Large \bf \ThesisName}
 \end{center}
 
 
@@ -132,7 +136,6 @@
 
 {\bf У роботі досліджується теоретичне підґрунтя використання текстурного дескриптора LBP та його модифікацій для моделювання та класифікації текстур, 
 розглядаються математична модель текстури згідно цього дескриптора.
-Робота налагоджує зв'язок між теорією зі статистичним підходом до моделювання текстур, та практичними спостереженнями та результатами.
 У практичному розділі досліджується використання цих дескрипторів для класифікації текстур, 
 а також перевіряються деякі статистичні гіпотези щодо моделювання текстур через розподіл значень дескриптора.
 Демонструються доцільність такого моделювання, та можливі особливості даних і дескрипторів, на які варто звертати увагу.
@@ -146,7 +149,7 @@
 \bigskip
 
 \noindent
-{\bf Ключові слова:} сегментація зображень, текстурний дескриптор, локальні бінарні шаблони, метрики якості кластеризації.
+{\bf Ключові слова:} текстурний дескриптор, локальні бінарні шаблони, гістограми, класифікація текстур.
 \bigskip
 
 \newpage
@@ -160,7 +163,12 @@
 Kyiv Academic University, Kyiv, 2025, \NumPages~pages, \NumCitations~references.
 
 \bigskip
-{\bf ???Abstract???}
+{\bf The paper explores the theoretical basis for using the LBP texture descriptor and its modifications for modeling and classifying textures,
+considers the mathematical model of texture according to this descriptor.
+The practical section explores the use of these descriptors for classifying textures,
+and also tests some statistical hypotheses regarding modeling textures through the distribution of descriptor values.
+The feasibility of such modeling is shown, and possible features of data and descriptors that are worth paying attention to are demonstrated.
+The paper is written as a result of cooperation with the Laboratory of systems biology of the Institute of molecular biology and genetics.}
 
 \bigskip
 
@@ -173,7 +181,7 @@ Kyiv Academic University, Kyiv, 2025, \NumPages~pages, \NumCitations~references.
 \bigskip
 
 \noindent
-{\bf Key words:} \todo{}
+{\bf Key words:} texture descriptors, local binary patterns, histograms, texture classification.
 
 
 \newpage
@@ -186,7 +194,6 @@ Kyiv Academic University, Kyiv, 2025, \NumPages~pages, \NumCitations~references.
 \phantomsection
 \section*{Перелік умовних позначень}
 \addcontentsline{toc}{chapter}{Перелік умовних позначень}
-
 \include{parts/0-умовні-позначення}
 
 \newpage
@@ -230,21 +237,22 @@ Kyiv Academic University, Kyiv, 2025, \NumPages~pages, \NumCitations~references.
 \newpage
 
 \bibliographystyle{plain} %plain %sigma %amsalpha %ugost2008
+\addcontentsline{toc}{chapter}{Список використаних джерел}
 \bibliography{ref}
 
 % \begin{thebibliography}{99}
-% \addcontentsline{toc}{chapter}{Список використаних джерел}
 % \itemsep=0pt
 
 % % TODO: чому не працює
 
 % \end{thebibliography}
 
-\appendix
+% ДОДАТКИ
+% \appendix
 
-\chapter{Назва додатку}\label{appendix1}
+% \chapter{Назва додатку}\label{appendix1}
 
-\section{Назва секції додатку}\label{appendix1.1}
+% \section{Назва секції додатку}\label{appendix1.1}
 
 \end{document}
 
