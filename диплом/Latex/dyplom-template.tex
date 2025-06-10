@@ -2,7 +2,10 @@
 
 \usepackage[skins]{tcolorbox}
 
-\renewcommand{\thesubfigure}{\alph{subfigure}}
+\makeatletter
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\renewcommand\p@subfigure{\thefigure\,}
+\makeatother
 
 \renewcommand{\baselinestretch}{1.20}
 
@@ -35,8 +38,8 @@
 % \newcommand{\MSC}{62H30~Класифікація та дискримінація; кластерний аналіз, 62\nobreakdash-08~Обчислювальні методи для задач статистики, 62P10~Застосування статистики в біології та природничих науках, 68T10~Розпізнавання образів}
 % \newcommand{\MSCEn}{62H30~Classification and discrimination; cluster analysis (statistical aspects), 62-08~Computational methods for problems pertaining to statistics, 62P10~Applications of statistics to biology and medical sciences, 68T10~Pattern recognition}
 
-\newcommand{\MSC}{62H30, 62-08, 62P10, 68T10.}
-\newcommand{\MSCEn}{62H30, 62-08, 62P10, 68T10.}
+\newcommand{\MSC}{62H30; 62-08; 62P10; 68T10.}
+\newcommand{\MSCEn}{62H30; 62-08; 62P10; 68T10.}
 
 % MY COMMANDS
 \newcommand{\E}{\operatorname{\mathbb E}}
@@ -61,6 +64,13 @@
 % В'ячеслав Миколайович рекомендує починати з літератури (bib).
 % Ключові слова у порядку важливості.
 % Подумати про сортування умовних позначень
+
+% Всі e: референси
+% e:blinterp
+% e:ojala-T
+% e:circle
+% e:gtest-classifier-1
+
 
 \begin{document}
 \allowdisplaybreaks
@@ -134,12 +144,12 @@
 \bigskip
 
 
-{\bf У роботі досліджується теоретичне підґрунтя використання текстурного дескриптора LBP та його модифікацій для моделювання та класифікації текстур, 
+{ У роботі досліджується теоретичне підґрунтя використання текстурного дескриптора LBP та його модифікацій для моделювання та класифікації текстур, 
 розглядаються математична модель текстури згідно цього дескриптора.
 У практичному розділі досліджується використання цих дескрипторів для класифікації текстур, 
 а також перевіряються деякі статистичні гіпотези щодо моделювання текстур через розподіл значень дескриптора.
 Демонструються доцільність такого моделювання, та можливі особливості даних і дескрипторів, на які варто звертати увагу.
-Робота написана як підсумок співпраці із лабораторією системної біології ІМБГ НАНУ.}
+Робота написана як підсумок співпраці із лабораторією системної біології Інституту молекулярної біології та генетики НАНУ.}
 
 \bigskip
 
@@ -148,8 +158,9 @@
 
 \bigskip
 
+% todo: математичні ключові слова
 \noindent
-{\bf Ключові слова:} текстурний дескриптор, локальні бінарні шаблони, гістограми, класифікація текстур.
+{\bf Ключові слова:} текстурний дескриптор; локальні бінарні шаблони; гістограми; класифікація текстур; мультиноміальний розподіл; непараметричний критерій однорідності вибірок.
 \bigskip
 
 \newpage
@@ -163,7 +174,7 @@
 Kyiv Academic University, Kyiv, 2025, \NumPages~pages, \NumCitations~references.
 
 \bigskip
-{\bf The paper explores the theoretical basis for using the LBP texture descriptor and its modifications for modeling and classifying textures,
+{ The paper explores the theoretical basis for using the LBP texture descriptor and its modifications for modeling and classifying textures,
 considers the mathematical model of texture according to this descriptor.
 The practical section explores the use of these descriptors for classifying textures,
 and also tests some statistical hypotheses regarding modeling textures through the distribution of descriptor values.
@@ -181,7 +192,7 @@ The paper is written as a result of cooperation with the Laboratory of systems b
 \bigskip
 
 \noindent
-{\bf Key words:} texture descriptors, local binary patterns, histograms, texture classification.
+{\bf Key words:} texture descriptors; local binary patterns; histograms; texture classification; goodness of fit; multinomial distribution; nonparametric goodness of fit test.
 
 
 \newpage
@@ -194,32 +205,32 @@ The paper is written as a result of cooperation with the Laboratory of systems b
 \phantomsection
 \section*{Перелік умовних позначень}
 \addcontentsline{toc}{chapter}{Перелік умовних позначень}
-\include{parts/0-умовні-позначення}
+\input{parts/0-умовні-позначення}
 
 \newpage
 
 \phantomsection
 \chapter*{Вступ}\label{Introduction}
 \addcontentsline{toc}{chapter}{Вступ}
-\include{parts/0-вступ}
+\input{parts/0-вступ}
 
 \newpage
 
 \chapter{Теоретичне підґрунтя}\label{chapter1}
 
-\include{parts/1_1}
+\input{parts/1_1}
 
-\include{parts/1_2}
+\input{parts/1_2}
 
-\include{parts/1_3}
+\input{parts/1_3}
 
 \newpage
 
 \chapter{Практичні результати}\label{chapter2}
 
-\include{parts/2_1}
+\input{parts/2_1}
 
-\include{parts/2_2}
+\input{parts/2_2}
 
 \newpage
 
@@ -227,7 +238,7 @@ The paper is written as a result of cooperation with the Laboratory of systems b
 \chapter*{Висновки}
 \addcontentsline{toc}{chapter}{Висновки}
 
-\include{parts/3_conclusion}
+\input{parts/3_conclusion}
 
 \newpage
 

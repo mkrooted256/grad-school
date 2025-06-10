@@ -25,7 +25,8 @@
 \RequirePackage[labelsep=period]{caption}
 
 \RequirePackage{subcaption}
-\subcaptionsetup{margin=5pt}
+% \captionsetup[subfigure]{margin=5pt}
+\captionsetup[subfigure]{subrefformat=simple,labelformat=simple,margin=5pt}
 
 \RequirePackage[
  pdftex,
@@ -45,7 +46,7 @@
 
 % \numberwithin{footnote}{chapter}
 
-\numberwithin{figure}{section}
+\numberwithin{figure}{chapter}
 
 
 \@options
@@ -287,7 +288,7 @@
  \else
   \def\@svsechd{%
    #6{\hskip #3\relax
-   \@svsec #8.}%
+   \@svsec #8}%
    \csname #1mark\endcsname{#7}%
    \addcontentsline{toc}{#1}{%
     \ifnum #2>\c@secnumdepth \else
@@ -381,10 +382,10 @@
 %  ****************************************
 
 % mkrooted: VERSIONING
-\newcommand{\version}{версія 1}
+\newcommand{\version}{версія 2}
 
-\renewcommand{\@evenhead}{\null \version \hfill\thepage}
-\renewcommand{\@oddhead}{\null \version \hfill\thepage}
+\renewcommand{\@evenhead}{\null\hfill\thepage}
+\renewcommand{\@oddhead}{\null\hfill\thepage}
 \let\@oddfoot\@empty\let\@evenfoot\@empty
 
 
